@@ -1,0 +1,917 @@
+<!doctype html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Osons le Rail ! — Le train Perpignan / Céret</title>
+    <meta name="description" content="Osons le Rail ! milite pour la réouverture de la ligne ferroviaire Perpignan-Céret. Un transport écologique, économique et au service de tout le Vallespir." />
+    <meta property="og:title" content="Osons le Rail ! — Le train direct Perpignan / Céret" />
+    <meta property="og:description" content="Ensemble, redonnons vie à la ligne ferroviaire historique du Vallespir." />
+    <meta property="og:type" content="website" />
+    <link rel="icon" type="image/svg+xml" href="logos/logo-mark.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <style>
+        :root {
+            /* Refined transit-grade palette: deep navy + ecological green + Catalan gold */
+            --primary: #0e8f6e;        /* action / ecology */
+            --primary-dark: #0a6b53;
+            --primary-light: #e6f4ef;
+            --secondary: #0a2540;      /* deep institutional navy */
+            --accent: #e0a100;         /* Catalan-adjacent gold (sparing) */
+            --dark: #0a2540;           /* structure: header, footer, headings */
+            --ink-soft: #33475b;       /* secondary text */
+            --light: #f4f6f9;          /* cool canvas */
+            --gray: #5b6b7b;
+            --gray-light: #e2e8f0;
+            --shadow: 0 1px 2px rgba(10,37,64,0.06), 0 4px 12px -2px rgba(10,37,64,0.08);
+            --shadow-lg: 0 12px 32px -8px rgba(10,37,64,0.18), 0 4px 10px -4px rgba(10,37,64,0.10);
+            --radius: 0.65rem;
+            --font-head: 'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: var(--font-body);
+            line-height: 1.65; color: #1c2b3a; background-color: var(--light);
+            -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility;
+        }
+        h1, h2, h3, h4, .logo, .stat-number, .section-title, .block-title, .next-train-time { font-family: var(--font-head); }
+        h1, h2, h3, .section-title, .block-title { letter-spacing: -0.02em; }
+        img { max-width: 100%; }
+
+        /* HEADER */
+        .header { background: var(--dark); color: white; padding: 0.75rem 0; position: sticky; top: 0; z-index: 100; box-shadow: 0 1px 0 rgba(255,255,255,0.06), var(--shadow); border-bottom: 3px solid var(--primary); }
+        .header-container { max-width: 1200px; margin: 0 auto; padding: 0 1rem; display: flex; justify-content: space-between; align-items: center; }
+        .logo { display: flex; align-items: center; gap: 0.75rem; font-size: 1.4rem; font-weight: 700; cursor: pointer; }
+        .logo-icon { width: 42px; height: 42px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+        .logo-icon img { width: 100%; height: 100%; display: block; }
+        .nav-toggle { display: none; background: none; border: none; color: white; font-size: 1.6rem; cursor: pointer; line-height: 1; }
+        .nav { display: flex; gap: 0.25rem; list-style: none; flex-wrap: wrap; align-items: center; }
+        .nav a { color: white; text-decoration: none; padding: 0.5rem 0.7rem; border-radius: var(--radius); transition: all 0.2s; font-weight: 500; cursor: pointer; white-space: nowrap; font-size: 0.95rem; }
+        .nav a:hover { background: rgba(255, 255, 255, 0.12); }
+        .nav a.active { background: var(--primary); }
+
+        /* HERO */
+        .hero {
+            background:
+                linear-gradient(135deg, rgba(10,37,64,0.94) 0%, rgba(12,52,89,0.90) 100%),
+                url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 500"><rect fill="%230a2540" width="1200" height="500"/><g stroke="%23ffffff" stroke-width="2" opacity="0.06" fill="none"><path d="M-50 420 L1250 120"/><path d="M-50 460 L1250 160"/><path d="M0 80 L1200 80 M0 95 L1200 95"/></g><g fill="%230e8f6e" opacity="0.18"><circle cx="120" cy="430" r="180"/><circle cx="1080" cy="90" r="150"/></g></svg>');
+            background-size: cover; background-position: center; color: white; padding: 5.5rem 1rem; text-align: center; position: relative;
+        }
+        .hero-container { max-width: 900px; margin: 0 auto; position: relative; }
+        .hero .eyebrow { display: inline-block; font-family: var(--font-head); font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; font-size: 0.8rem; color: #7fe3c0; margin-bottom: 1rem; }
+        .hero h1 { font-size: 3rem; font-weight: 800; margin-bottom: 1rem; line-height: 1.1; letter-spacing: -0.03em; }
+        .hero p { font-size: 1.2rem; margin: 0 auto 2.25rem; max-width: 700px; color: rgba(255,255,255,0.88); }
+        .hero-cta { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+
+        /* BUTTONS */
+        .btn { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.8rem 1.6rem; border-radius: var(--radius); text-decoration: none; font-weight: 600; transition: all 0.25s; border: none; cursor: pointer; font-size: 1rem; }
+        .btn-primary { background: var(--primary); color: white; box-shadow: var(--shadow); }
+        .btn-primary:hover { background: var(--primary-dark); transform: translateY(-2px); box-shadow: var(--shadow-lg); }
+        .btn-secondary { background: rgba(255, 255, 255, 0.15); color: white; border: 2px solid white; }
+        .btn-secondary:hover { background: rgba(255, 255, 255, 0.3); transform: translateY(-2px); }
+        .btn-sm { padding: 0.45rem 0.9rem; font-size: 0.85rem; }
+
+        /* STATS */
+        .stats { padding: 3rem 1rem; background: white; }
+        .stats-container { max-width: 1200px; margin: 0 auto; }
+        .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; }
+        .stat-card { background: var(--light); padding: 2rem 1rem; border-radius: var(--radius); box-shadow: var(--shadow); text-align: center; transition: all 0.3s; border-top: 4px solid var(--primary); }
+        .stat-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-lg); }
+        .stat-number { font-size: 2.4rem; font-weight: 800; color: var(--primary); margin-bottom: 0.4rem; line-height: 1; }
+        .stat-label { color: var(--gray); font-size: 0.95rem; }
+
+        /* MAIN CONTENT */
+        .main { padding: 3rem 1rem; }
+        .main-container { max-width: 1100px; margin: 0 auto; }
+        .section { margin-bottom: 3.5rem; }
+        .section-header { text-align: center; margin-bottom: 2rem; }
+        .section-title { font-size: 2.1rem; font-weight: 700; color: var(--dark); margin-bottom: 0.5rem; }
+        .section-subtitle { color: var(--gray); font-size: 1.1rem; max-width: 700px; margin: 0 auto; }
+        h2.block-title { font-size: 1.6rem; margin-bottom: 1.25rem; color: var(--dark); }
+        h3.sub-title { font-size: 1.2rem; margin-bottom: 0.75rem; color: var(--primary-dark); }
+        .lead { font-size: 1.1rem; color: #374151; }
+        .prose p { margin-bottom: 1rem; }
+        .prose ul { margin: 0.5rem 0 1rem 1.25rem; }
+        .prose li { margin-bottom: 0.4rem; }
+
+        /* LAYOUT */
+        .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start; }
+        .cards-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
+        .card { background: white; border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); transition: all 0.3s; }
+        .card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
+        .card-img { height: 120px; background: var(--primary-light); border-bottom: 3px solid var(--primary); display: flex; align-items: center; justify-content: center; font-size: 2.8rem; }
+        .card-body { padding: 1.5rem; }
+        .card-title { font-size: 1.2rem; font-weight: 700; margin-bottom: 0.6rem; }
+        .card-text { color: var(--gray); }
+        .panel { background: white; border-radius: var(--radius); box-shadow: var(--shadow); padding: 1.75rem; }
+        .panel-accent { border-left: 4px solid var(--primary); }
+
+        /* HALTES / LINE SCHEMATIC */
+        .line-map { display: flex; flex-wrap: wrap; justify-content: center; gap: 0; background: white; padding: 2rem 1rem; border-radius: var(--radius); box-shadow: var(--shadow); }
+        .halte { display: flex; flex-direction: column; align-items: center; position: relative; min-width: 90px; padding: 0 0.25rem; }
+        .halte-dot { width: 22px; height: 22px; border-radius: 50%; background: var(--primary); border: 4px solid white; box-shadow: 0 0 0 2px var(--primary); z-index: 2; margin-bottom: 0.5rem; }
+        .halte.terminus .halte-dot { width: 28px; height: 28px; background: var(--accent); box-shadow: 0 0 0 2px var(--accent); }
+        .halte-line { position: absolute; top: 11px; left: -50%; right: 50%; height: 4px; background: var(--primary); z-index: 1; }
+        .halte:first-child .halte-line { display: none; }
+        .halte-name { font-size: 0.8rem; font-weight: 600; text-align: center; }
+
+        /* TIMETABLE */
+        .next-train { background: linear-gradient(135deg, var(--dark), #2d3748); color: white; border-radius: var(--radius); padding: 1.75rem; box-shadow: var(--shadow-lg); }
+        .next-train-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top: 1rem; }
+        .next-train-card { background: rgba(255,255,255,0.08); border-radius: var(--radius); padding: 1.25rem; text-align: center; }
+        .next-train-dir { font-size: 0.85rem; opacity: 0.8; margin-bottom: 0.4rem; }
+        .next-train-time { font-size: 2.2rem; font-weight: 800; color: #4ade80; line-height: 1; }
+        .next-train-sub { font-size: 0.85rem; opacity: 0.75; margin-top: 0.4rem; }
+        .timetable-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; border-radius: var(--radius); box-shadow: var(--shadow); }
+        table.tt { width: 100%; border-collapse: collapse; background: white; font-size: 0.85rem; min-width: 640px; }
+        table.tt th, table.tt td { padding: 0.5rem 0.6rem; text-align: center; border-bottom: 1px solid var(--gray-light); white-space: nowrap; }
+        table.tt thead th { background: var(--primary); color: white; position: sticky; top: 0; }
+        table.tt tbody th { text-align: left; background: #f3f4f6; font-weight: 600; position: sticky; left: 0; }
+        table.tt tbody tr:nth-child(even) td { background: #fafafa; }
+        .tt-toggle { display: inline-flex; border-radius: var(--radius); overflow: hidden; border: 2px solid var(--primary); margin-bottom: 1rem; }
+        .tt-toggle button { padding: 0.5rem 1.1rem; border: none; background: white; color: var(--primary); font-weight: 600; cursor: pointer; font-size: 0.9rem; }
+        .tt-toggle button.active { background: var(--primary); color: white; }
+
+        /* MAP */
+        .map-container { max-width: 1000px; margin: 0 auto; background: white; border-radius: var(--radius); padding: 1.5rem; box-shadow: var(--shadow); }
+        .map-container img { width: 100%; height: auto; border-radius: var(--radius); display: block; }
+        .legend { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1rem; margin-top: 1.5rem; }
+        .legend-item { display: flex; gap: 0.75rem; align-items: flex-start; font-size: 0.9rem; }
+        .legend-dot { width: 18px; height: 18px; border-radius: 50%; flex-shrink: 0; margin-top: 2px; }
+
+        /* TABLE (generic data) */
+        .data-table { width: 100%; border-collapse: collapse; margin: 1rem 0; background: white; box-shadow: var(--shadow); border-radius: var(--radius); overflow: hidden; }
+        .data-table th, .data-table td { padding: 0.75rem 1rem; text-align: left; border-bottom: 1px solid var(--gray-light); }
+        .data-table th { background: #f9fafb; font-weight: 700; }
+        .data-table td:last-child, .data-table th:last-child { text-align: right; }
+        .data-table .total td { font-weight: 700; background: var(--primary-light); }
+
+        /* PARTNERS */
+        .partners-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1.25rem; align-items: stretch; }
+        .partner-logo { display: flex; align-items: center; justify-content: center; text-align: center; background: white; border-radius: var(--radius); padding: 1.25rem; border: 1px solid var(--gray-light); font-size: 0.9rem; font-weight: 600; color: var(--ink-soft); min-height: 110px; transition: all 0.25s; box-shadow: var(--shadow); }
+        .partner-logo:hover { transform: translateY(-3px); box-shadow: var(--shadow-lg); }
+        .partner-logo img { max-height: 70px; max-width: 100%; width: auto; object-fit: contain; }
+        .partners-text { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.6rem; margin-top: 1.25rem; }
+        .partner-chip { background: white; border: 1px solid var(--gray-light); border-radius: 999px; padding: 0.5rem 1.1rem; font-size: 0.9rem; font-weight: 600; color: var(--ink-soft); }
+
+        /* CTA */
+        .cta-section { background: linear-gradient(135deg, var(--primary), var(--primary-dark)); color: white; padding: 3.5rem 1rem; text-align: center; }
+        .cta-section h2 { font-size: 2rem; margin-bottom: 1rem; }
+        .cta-section p { font-size: 1.1rem; max-width: 700px; margin: 0 auto 2rem; opacity: 0.95; }
+
+        /* NEWSLETTER */
+        .newsletter { background: var(--secondary); color: white; padding: 2rem; border-radius: var(--radius); }
+        .newsletter h3 { margin-bottom: 1rem; }
+        .newsletter-form { display: flex; gap: 1rem; flex-wrap: wrap; }
+        .newsletter-form input { flex: 1; min-width: 200px; padding: 0.75rem; border: none; border-radius: var(--radius); font-size: 1rem; }
+        .newsletter-form button { padding: 0.75rem 1.5rem; background: var(--primary); color: white; border: none; border-radius: var(--radius); font-weight: 600; cursor: pointer; }
+
+        /* TIMELINE */
+        .timeline { position: relative; padding-left: 2rem; max-width: 820px; margin: 0 auto; }
+        .timeline::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 3px; background: var(--primary); border-radius: 3px; }
+        .timeline-item { position: relative; padding-bottom: 2rem; }
+        .timeline-item::before { content: ''; position: absolute; left: -1.5rem; top: 0.3rem; width: 14px; height: 14px; background: var(--primary); border-radius: 50%; border: 3px solid white; box-shadow: 0 0 0 2px var(--primary); }
+        .timeline-item.highlight::before { background: var(--accent); box-shadow: 0 0 0 2px var(--accent); }
+        .timeline-date { font-weight: 700; color: var(--primary); margin-bottom: 0.2rem; }
+        .timeline-item.highlight .timeline-date { color: var(--accent); }
+        .timeline-title { font-weight: 600; margin-bottom: 0.3rem; }
+        .timeline-description { color: var(--gray); }
+
+        /* FOOTER */
+        .footer { background: var(--dark); color: white; padding: 3rem 1rem 2rem; }
+        .footer-container { max-width: 1100px; margin: 0 auto; }
+        .footer-row { display: flex; gap: 2rem; flex-wrap: wrap; justify-content: space-between; margin-bottom: 2rem; }
+        .footer-info { flex: 1; min-width: 240px; }
+        .footer-info p { margin-bottom: 0.4rem; }
+        .footer-info a { color: var(--primary); text-decoration: none; }
+        .footer-col { flex: 1; min-width: 180px; }
+        .footer-col h3 { font-size: 1.15rem; margin-bottom: 1rem; position: relative; padding-bottom: 0.5rem; }
+        .footer-col h3::after { content: ''; position: absolute; left: 0; bottom: 0; width: 45px; height: 3px; background: var(--primary); }
+        .footer-col ul { list-style: none; }
+        .footer-col ul li { margin-bottom: 0.5rem; }
+        .footer-col a { color: rgba(255, 255, 255, 0.8); text-decoration: none; transition: all 0.2s; cursor: pointer; }
+        .footer-col a:hover { color: var(--primary); }
+        .copyright { text-align: center; padding-top: 2rem; border-top: 1px solid rgba(255, 255, 255, 0.1); color: rgba(255, 255, 255, 0.6); font-size: 0.875rem; }
+        .copyright a { color: rgba(255, 255, 255, 0.6); text-decoration: none; }
+
+        /* TOAST */
+        .toast { position: fixed; bottom: 2rem; right: 2rem; background: var(--dark); color: white; padding: 1rem 1.5rem; border-radius: var(--radius); box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2); transform: translateX(120%); transition: transform 0.3s ease-out; z-index: 1000; display: flex; align-items: center; gap: 0.75rem; }
+        .toast.show { transform: translateX(0); }
+        .toast.success { background: #10b981; } .toast.error { background: #ef4444; } .toast.info { background: var(--secondary); }
+        .loading { display: inline-block; width: 18px; height: 18px; border: 3px solid rgba(255, 255, 255, 0.3); border-radius: 50%; border-top-color: white; animation: spin 1s linear infinite; }
+        @keyframes spin { to { transform: rotate(360deg); } }
+
+        /* PAGES + reveal */
+        .page-content { display: none; }
+        .page-content.active { display: block; animation: fade 0.4s ease; }
+        @keyframes fade { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+        .reveal { opacity: 0; transform: translateY(20px); transition: all 0.6s ease; }
+        .reveal.visible { opacity: 1; transform: none; }
+        .badge { display: inline-block; background: var(--primary-light); color: var(--primary-dark); padding: 0.2rem 0.7rem; border-radius: 999px; font-size: 0.8rem; font-weight: 600; margin-bottom: 0.75rem; }
+
+        /* RESPONSIVE */
+        @media (max-width: 860px) {
+            .nav-toggle { display: block; }
+            .nav { position: absolute; top: 100%; left: 0; right: 0; background: var(--dark); flex-direction: column; padding: 0.75rem; gap: 0.2rem; display: none; align-items: stretch; box-shadow: var(--shadow-lg); }
+            .nav.active { display: flex; }
+            .nav a { padding: 0.7rem 0.8rem; }
+            .hero h1 { font-size: 2rem; }
+            .hero p { font-size: 1.05rem; }
+            .two-col { grid-template-columns: 1fr; gap: 2rem; }
+            .next-train-grid { grid-template-columns: 1fr; }
+            .newsletter-form { flex-direction: column; }
+            .newsletter-form input { width: 100%; }
+            .toast { left: 1rem; right: 1rem; bottom: 1rem; transform: translateY(150%); }
+            .toast.show { transform: translateY(0); }
+            .footer-row { flex-direction: column; gap: 1.5rem; text-align: center; }
+            .footer-col h3::after { left: 50%; transform: translateX(-50%); }
+            .section-title { font-size: 1.7rem; }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-container">
+            <div class="logo" onclick="navigateTo('accueil')"><div class="logo-icon"><img src="logos/logo-mark.svg" alt="Osons le Rail" /></div><span>Osons le Rail !</span></div>
+            <button class="nav-toggle" aria-label="Menu">☰</button>
+            <nav>
+                <ul class="nav">
+                    <li><a data-page="accueil" class="active">Accueil</a></li>
+                    <li><a data-page="qui-sommes-nous">Qui sommes-nous&nbsp;?</a></li>
+                    <li><a data-page="notre-projet">Notre projet</a></li>
+                    <li><a data-page="horaires">Horaires</a></li>
+                    <li><a data-page="historique">Historique</a></li>
+                    <li><a data-page="une-ligne-des-envies">Une ligne, des envies</a></li>
+                    <li><a data-page="trains-du-66">Les trains du 66</a></li>
+                    <li><a data-page="contacts">Contacts</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- ====================== ACCUEIL ====================== -->
+    <main id="page-accueil" class="page-content active">
+        <section class="hero">
+            <div class="hero-container">
+                <span class="eyebrow">Ligne Perpignan — Céret · Vallespir</span>
+                <h1>Le train direct Perpignan&nbsp;/&nbsp;Céret</h1>
+                <p>Ensemble, redonnons vie à la ligne ferroviaire historique du Vallespir. Un transport écologique, économique et au service de tous&nbsp;: l'agglomération de Perpignan, les Albères, les Aspres et le Vallespir.</p>
+                <div class="hero-cta">
+                    <a href="https://www.helloasso.com/associations/osons-le-rail" class="btn btn-primary" target="_blank" rel="noopener">🎟️ Adhérer via HelloAsso</a>
+                    <a href="https://chng.it/LD7MkBFDLm" class="btn btn-secondary" target="_blank" rel="noopener">✍️ Signer la pétition</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="stats">
+            <div class="stats-container">
+                <div class="stats-grid">
+                    <div class="stat-card"><div class="stat-number" data-count="80" data-suffix="+">0</div><div class="stat-label">Adhérents</div></div>
+                    <div class="stat-card"><div class="stat-number" data-count="2000" data-suffix="+">0</div><div class="stat-label">Signataires de la pétition</div></div>
+                    <div class="stat-card"><div class="stat-number" data-count="34" data-suffix=" min">0</div><div class="stat-label">Temps de trajet Céret-Perpignan</div></div>
+                    <div class="stat-card"><div class="stat-number" data-count="4271">0</div><div class="stat-label">Voyageurs potentiels / jour</div></div>
+                </div>
+            </div>
+        </section>
+
+        <div class="main">
+            <div class="main-container">
+                <section class="section reveal">
+                    <div class="next-train" id="nextTrainWidget">
+                        <h2 style="font-size:1.4rem">🚆 Prochains départs (horaires proposés)</h2>
+                        <p style="opacity:0.8;font-size:0.9rem;margin-top:0.25rem">Cadence à l'heure imaginée par l'étude de faisabilité — un aperçu de ce que pourrait être la ligne.</p>
+                        <div class="next-train-grid">
+                            <div class="next-train-card">
+                                <div class="next-train-dir">Perpignan → Céret</div>
+                                <div class="next-train-time" id="nextDepPerpignan">--:--</div>
+                                <div class="next-train-sub" id="nextDepPerpignanSub">au départ de Perpignan</div>
+                            </div>
+                            <div class="next-train-card">
+                                <div class="next-train-dir">Céret → Perpignan</div>
+                                <div class="next-train-time" id="nextDepCeret">--:--</div>
+                                <div class="next-train-sub" id="nextDepCeretSub">au départ de Céret</div>
+                            </div>
+                        </div>
+                        <p style="text-align:center;margin-top:1.25rem"><a class="btn btn-primary btn-sm" onclick="navigateTo('horaires')">Voir tous les horaires →</a></p>
+                    </div>
+                </section>
+
+                <section class="section reveal">
+                    <div class="section-header">
+                        <h2 class="section-title">Un projet, quatre bonnes raisons</h2>
+                        <p class="section-subtitle">La réouverture Perpignan-Céret, c'est gagnant pour le territoire.</p>
+                    </div>
+                    <div class="cards-grid">
+                        <div class="card"><div class="card-img">🌍</div><div class="card-body"><h4 class="card-title">Écologique</h4><p class="card-text">−85&nbsp;% d'émissions de CO₂ entre une voiture thermique et le TER. Jusqu'à 4&nbsp;500 trajets routiers évités chaque jour.</p></div></div>
+                        <div class="card"><div class="card-img">💶</div><div class="card-body"><h4 class="card-title">Économique</h4><p class="card-text">1&nbsp;507&nbsp;€ d'économies de carburant par an et par navetteur. Un investissement modéré de 34,8&nbsp;M€.</p></div></div>
+                        <div class="card"><div class="card-img">⏱️</div><div class="card-body"><h4 class="card-title">Rapide</h4><p class="card-text">34&nbsp;minutes entre Céret et Perpignan, sans changement à Elne. Bien plus rapide que la route aux heures de pointe.</p></div></div>
+                        <div class="card"><div class="card-img">🤝</div><div class="card-body"><h4 class="card-title">Solidaire</h4><p class="card-text">Étudiants, seniors, travailleurs&nbsp;: une mobilité pour toutes et tous, dans un territoire désenclavé uniquement par la route.</p></div></div>
+                    </div>
+                </section>
+
+                <section class="section reveal">
+                    <div style="display: flex; gap: 2rem; flex-wrap: wrap; align-items: stretch">
+                        <div class="newsletter" style="flex: 2; min-width: 300px">
+                            <h3>📬 Restez informés</h3>
+                            <p style="margin-bottom:1rem;opacity:0.9">Recevez nos actualités et les avancées du projet.</p>
+                            <form id="newsletterForm" class="newsletter-form">
+                                <input type="email" id="newsletterEmail" placeholder="Votre email" required />
+                                <button type="submit" class="btn btn-primary"><span id="newsletterButtonText">S'inscrire</span><span id="newsletterLoading" class="loading" style="display:none"></span></button>
+                            </form>
+                            <p style="margin-top:1rem;font-size:0.85rem;opacity:0.8">Vos données sont protégées (RGPD).</p>
+                        </div>
+                        <div style="flex: 1; min-width: 240px; display: flex; flex-direction: column; gap: 1rem; justify-content: center">
+                            <a href="#" target="_blank" rel="noopener" class="btn" style="background:#e4405f;color:white;justify-content:center">📷 Instagram</a>
+                            <a href="#" target="_blank" rel="noopener" class="btn" style="background:#1877f2;color:white;justify-content:center">📘 Facebook</a>
+                            <a href="mailto:osonslerail@laposte.net" class="btn btn-primary" style="justify-content:center">✉️ Nous écrire</a>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="section reveal">
+                    <div class="section-header"><h2 class="section-title">Ensemble — nos partenaires</h2><p class="section-subtitle">Adhérents individuels, collectifs et institutionnels mobilisés pour le projet.</p></div>
+                    <div class="partners-grid">
+                        <div class="partner-logo"><img src="logos/ceret.png" alt="Ville de Céret" loading="lazy" /></div>
+                        <div class="partner-logo"><img src="logos/departement-66.png" alt="Département des Pyrénées-Orientales" loading="lazy" /></div>
+                        <div class="partner-logo"><img src="logos/occitanie.png" alt="Région Occitanie / Pyrénées-Méditerranée" loading="lazy" /></div>
+                        <div class="partner-logo"><img src="logos/cgt-cheminots.jpg" alt="CGT Fédération des Cheminots" loading="lazy" /></div>
+                        <div class="partner-logo"><img src="logos/pays-pyrenees-mediterranee.jpg" alt="Pays Pyrénées-Méditerranée" loading="lazy" /></div>
+                        <div class="partner-logo"><img src="logos/cc-vallespir.jpg" alt="Communauté de communes du Vallespir" loading="lazy" /></div>
+                        <div class="partner-logo"><img src="logos/cc-acvi.png" alt="Communauté de communes Albères-Côte Vermeille-Illibéris" loading="lazy" /></div>
+                    </div>
+                    <div class="partners-text">
+                        <span class="partner-chip">Bien Vivre en Vallespir</span>
+                    </div>
+                </section>
+
+                <section class="section reveal">
+                    <div class="section-header"><h2 class="section-title">Archives</h2><p class="section-subtitle">Consultez nos précédentes publications.</p></div>
+                    <div class="cards-grid">
+                        <div class="card"><div class="card-img">📰</div><div class="card-body"><h4 class="card-title">Newsletters précédentes</h4><p class="card-text">Retrouvez ici les anciennes éditions de notre newsletter.</p><p style="margin-top:1rem;font-size:0.85rem;color:var(--gray)">[À compléter avec les liens]</p></div></div>
+                        <div class="card"><div class="card-img">📋</div><div class="card-body"><h4 class="card-title">Comptes-rendus de réunions</h4><p class="card-text">Accédez aux comptes-rendus des réunions du bureau de l'association.</p><p style="margin-top:1rem;font-size:0.85rem;color:var(--gray)">[À compléter avec les liens]</p></div></div>
+                    </div>
+                </section>
+            </div>
+        </div>
+
+        <section class="cta-section">
+            <h2>Vous aussi, montez à bord !</h2>
+            <p>Plus nous serons nombreux, plus notre voix comptera dans le débat public. Chaque adhésion et chaque signature renforcent le projet.</p>
+            <div class="hero-cta">
+                <a href="https://www.helloasso.com/associations/osons-le-rail" class="btn btn-secondary" target="_blank" rel="noopener">🎟️ Adhérer</a>
+                <a href="https://chng.it/LD7MkBFDLm" class="btn btn-secondary" target="_blank" rel="noopener">✍️ Signer la pétition</a>
+            </div>
+        </section>
+    </main>
+
+    <!-- ====================== QUI SOMMES-NOUS ====================== -->
+    <main id="page-qui-sommes-nous" class="page-content">
+        <div class="main"><div class="main-container">
+            <section class="section"><div class="section-header"><span class="badge">Association loi 1901</span><h1 class="section-title">Qui sommes-nous&nbsp;?</h1><p class="section-subtitle">Redonner vie à la ligne ferroviaire Céret-Perpignan.</p></div></section>
+
+            <section class="section reveal"><div class="two-col">
+                <div class="prose">
+                    <h2 class="block-title">L'association Osons le Rail&nbsp;!</h2>
+                    <p>L'association regroupe aujourd'hui <strong>80 adhérents</strong>&nbsp;: individuels, collectifs et institutionnels (mairie, département, région). Son financement repose à près de 80&nbsp;% sur les subventions de la mairie, du département et de la région.</p>
+                    <p>Notre objectif&nbsp;: la réouverture de la ligne ferroviaire entre <strong>Céret et Perpignan</strong>, un projet écologique et économique au bénéfice de tout le territoire — l'agglomération de Perpignan, les Albères, les Aspres et le Vallespir.</p>
+                    <p>L'augmentation du nombre d'adhérents est un enjeu majeur&nbsp;: elle témoigne de la représentativité de l'association et pèse dans le débat public.</p>
+                </div>
+                <div class="panel panel-accent">
+                    <h3 class="sub-title">Un projet pour le territoire</h3>
+                    <p style="color:#374151;margin-bottom:1rem">L'étude de faisabilité initiée par la CGT Cheminots (CSE SNCF) a démontré la viabilité technique et économique du projet.</p>
+                    <ul class="prose" style="color:#374151">
+                        <li><strong>34,8&nbsp;M€</strong> d'investissement infrastructure (±50&nbsp;%)</li>
+                        <li><strong>34&nbsp;minutes</strong> de trajet Céret-Perpignan</li>
+                        <li><strong>1&nbsp;300 à 2&nbsp;200</strong> navetteurs quotidiens sur le bas Vallespir</li>
+                        <li>Présentée en <strong>débat public le 28/11/2024</strong> à Céret devant 150 citoyens</li>
+                    </ul>
+                </div>
+            </div></section>
+
+            <section class="section reveal">
+                <h2 class="block-title" style="text-align:center">Nos réalisations</h2>
+                <div class="cards-grid">
+                    <div class="card"><div class="card-img">📝</div><div class="card-body"><h4 class="card-title">Pétition 2023</h4><p class="card-text">Plus de 2&nbsp;000 signataires pour « En Vallespir, demandons le retour du train Céret-Perpignan ».</p></div></div>
+                    <div class="card"><div class="card-img">📊</div><div class="card-body"><h4 class="card-title">Étude de faisabilité</h4><p class="card-text">Initiée par la CGT Cheminots, réalisée par Progexa, Proneos, Cerec Engineering et Traject. Présentée en débat public à Céret le 28/11/2024.</p></div></div>
+                    <div class="card"><div class="card-img">👥</div><div class="card-body"><h4 class="card-title">Mobilisation citoyenne</h4><p class="card-text">150 citoyens au débat public, un potentiel de 1&nbsp;300 à 2&nbsp;200 navetteurs journaliers sur le bas Vallespir.</p></div></div>
+                </div>
+            </section>
+
+            <section class="section reveal">
+                <h2 class="block-title" style="text-align:center">Les parties prenantes</h2>
+                <p class="section-subtitle" style="margin-bottom:1.5rem">Un projet collectif, porté avec les collectivités, les cheminots et les acteurs du territoire.</p>
+                <div class="two-col">
+                    <div class="panel">
+                        <h3 class="sub-title">🏛️ Collectivités & institutions</h3>
+                        <ul class="prose" style="color:#374151">
+                            <li>Mairie de Céret, Mairie du Boulou, Mairie d'Elne, Mairie de Saint-Jean-Pla-de-Corts, Mairie de Banyuls-dels-Aspres</li>
+                            <li>Communauté de communes du Vallespir</li>
+                            <li>Communauté de communes Albères-Côte Vermeille-Illibéris</li>
+                            <li>Pays Pyrénées-Méditerranée</li>
+                            <li>Département des Pyrénées-Orientales (66)</li>
+                            <li>Région Occitanie</li>
+                            <li>Communes du Haut Vallespir&nbsp;: Amélie-les-Bains, Arles-sur-Tech…</li>
+                        </ul>
+                    </div>
+                    <div class="panel">
+                        <h3 class="sub-title">🤝 Acteurs & partenaires techniques</h3>
+                        <ul class="prose" style="color:#374151">
+                            <li>CGT Cheminots 66 (à l'origine de l'étude de faisabilité via le CSE SNCF)</li>
+                            <li>Association Bien Vivre en Vallespir</li>
+                            <li>Cabinets d'ingénierie&nbsp;: Cerec Engineering, Progexa, Proneos, Traject</li>
+                            <li>Ecotrain, Tecsol (solutions techniques & énergie)</li>
+                            <li>Lio (réseau de bus départemental)</li>
+                            <li>Le Train Rouge & le Train Jaune (inspirations touristiques)</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+        </div></div>
+    </main>
+
+    <!-- ====================== NOTRE PROJET ====================== -->
+    <main id="page-notre-projet" class="page-content">
+        <div class="main"><div class="main-container">
+            <section class="section"><div class="section-header"><span class="badge">Avant-projet</span><h1 class="section-title">Notre projet</h1><p class="section-subtitle">Réouverture de la ligne ferroviaire Perpignan-Céret&nbsp;: un projet écologique, économique et social.</p></div></section>
+
+            <section class="section reveal">
+                <div class="stats-grid">
+                    <div class="stat-card"><div class="stat-number" data-count="34" data-suffix=" min">0</div><div class="stat-label">Trajet Céret-Perpignan</div></div>
+                    <div class="stat-card"><div class="stat-number">34,8&nbsp;M€</div><div class="stat-label">Investissement infra.</div></div>
+                    <div class="stat-card"><div class="stat-number" data-count="7">0</div><div class="stat-label">Haltes prévues</div></div>
+                    <div class="stat-card"><div class="stat-number">−85&nbsp;%</div><div class="stat-label">Émissions de CO₂</div></div>
+                </div>
+            </section>
+
+            <section class="section reveal">
+                <h2 class="block-title" style="text-align:center">Tracé de la ligne &amp; bénéficiaires</h2>
+                <p class="section-subtitle" style="margin-bottom:1.5rem">7 haltes prévues&nbsp;: Céret Zone Ullrich · Saint-Jean-Pla-de-Corts · Le Boulou · Banyuls-dels-Aspres · Ortaffa/Brouilla · Elne · Perpignan.</p>
+
+                <div class="line-map" style="margin-bottom:1.5rem">
+                    <div class="halte terminus"><div class="halte-line"></div><div class="halte-dot"></div><div class="halte-name">Céret<br>(terminus)</div></div>
+                    <div class="halte"><div class="halte-line"></div><div class="halte-dot"></div><div class="halte-name">St-Jean-Pla-de-Corts</div></div>
+                    <div class="halte"><div class="halte-line"></div><div class="halte-dot"></div><div class="halte-name">Le Boulou</div></div>
+                    <div class="halte"><div class="halte-line"></div><div class="halte-dot"></div><div class="halte-name">Banyuls-dels-Aspres</div></div>
+                    <div class="halte"><div class="halte-line"></div><div class="halte-dot"></div><div class="halte-name">Ortaffa / Brouilla</div></div>
+                    <div class="halte"><div class="halte-line"></div><div class="halte-dot"></div><div class="halte-name">Elne</div></div>
+                    <div class="halte terminus"><div class="halte-line"></div><div class="halte-dot"></div><div class="halte-name">Perpignan</div></div>
+                </div>
+
+                <div class="map-container">
+                    <img src="carte-ligne.png" alt="Carte ferroviaire du département des Pyrénées-Orientales avec les haltes et communes desservies" loading="lazy" />
+                    <div class="legend">
+                        <div class="legend-item"><span class="legend-dot" style="background:#3b82f6"></span><span><strong>7 haltes étudiées&nbsp;:</strong> Céret Zone Ullrich, Saint-Jean-Pla-de-Corts, Le Boulou, Banyuls-dels-Aspres, Ortaffa/Brouilla, Elne, Perpignan.</span></div>
+                        <div class="legend-item"><span class="legend-dot" style="background:#f59e0b"></span><span><strong>1 halte à étudier&nbsp;:</strong> entre Villeneuve-de-la-Raho, Corneilla-del-Vercol et Théza.</span></div>
+                        <div class="legend-item"><span class="legend-dot" style="background:#facc15"></span><span><strong>10 communes bénéficiaires de proximité&nbsp;:</strong> Maureillas-las-Illas, Montesquieu-des-Albères, Villelongue-dels-Monts, Laroque-des-Albères, Saint-Genis-des-Fontaines, Tresserre, Saint-Jean-Lasseille, Villemolaque, Saint-André-des-Albères, Palau-del-Vidre.</span></div>
+                        <div class="legend-item"><span class="legend-dot" style="background:#16a34a"></span><span><strong>10 communes du Haut Vallespir</strong> (report bus + plateforme multimodale au terminus de Céret)&nbsp;: Amélie-les-Bains, Montbolo, Arles-sur-Tech, Corsavy, Montferrer, Serralongue, Le Tech, Saint-Laurent-de-Cerdans, Coustouges, Prats-de-Mollo.</span></div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section reveal">
+                <h2 class="block-title">Répondre à un vrai besoin de mobilité</h2>
+                <div class="two-col">
+                    <div class="panel">
+                        <h3 class="sub-title">📈 Un territoire en croissance</h3>
+                        <ul class="prose" style="color:#374151">
+                            <li><strong>+7&nbsp;644 habitants</strong> autour de la ligne entre 1990 et 2020 ; <strong>+1&nbsp;875</strong> attendus d'ici 2050.</li>
+                            <li>Perpignan concentre <strong>47&nbsp;%</strong> des emplois salariés des P.-O.</li>
+                            <li><strong>4&nbsp;200 navetteurs</strong> estimés en 2023 (+34&nbsp;% entre 2006 et 2016).</li>
+                            <li><strong>~80&nbsp;%</strong> des trajets domicile-travail se font en voiture.</li>
+                        </ul>
+                    </div>
+                    <div class="panel">
+                        <h3 class="sub-title">🚗 La voiture, un coût pour tous</h3>
+                        <ul class="prose" style="color:#374151">
+                            <li><strong>2 semaines</strong> par an passées en voiture pour un trajet Céret-Perpignan domicile-travail.</li>
+                            <li><strong>1&nbsp;507&nbsp;€</strong> de carburant par an et par navetteur.</li>
+                            <li><strong>76&nbsp;%</strong> des émissions de GES du Vallespir proviennent du transport routier (vs 28&nbsp;% en métropole).</li>
+                            <li><strong>37&nbsp;%</strong> des demandeurs d'emploi du bassin de Céret citent le transport comme principal frein à l'emploi.</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section reveal">
+                <h2 class="block-title">Faisabilité technique démontrée</h2>
+                <div class="two-col">
+                    <div class="prose">
+                        <h3 class="sub-title">Caractéristiques de la ligne</h3>
+                        <ul>
+                            <li>Ligne exploitée entre Elne et Le Boulou pour le fret (vitesse de ligne&nbsp;: 75&nbsp;km/h).</li>
+                            <li>Voies existantes du Boulou jusqu'au-delà de Saint-Jean-Pla-de-Corts (garage et manœuvre).</li>
+                            <li>Ligne électrifiée (1,5&nbsp;kV) jusqu'au PK&nbsp;498.263.</li>
+                            <li>Ligne Elne-Céret à voie unique&nbsp;; croisements possibles en gares d'Elne et du Boulou.</li>
+                        </ul>
+                    </div>
+                    <div class="prose">
+                        <h3 class="sub-title">Le concept horaire proposé</h3>
+                        <ul>
+                            <li>1 train voyageur + 1 train fret toutes les heures, sans mise en opposition.</li>
+                            <li>Continuité du TER Perpignan-Elne vers Céret, <strong>sans rupture de charge</strong>.</li>
+                            <li>Temps de parcours&nbsp;: <strong>34 minutes</strong> (50 km/h Le Boulou-Céret, 75 km/h Elne-Le Boulou).</li>
+                            <li>Une infrastructure de croisement (niveau Ortaffa-Brouilla) absorbe les retards jusqu'à 15 min.</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section reveal">
+                <h2 class="block-title">3 tronçons entre Elne et Céret</h2>
+                <div class="cards-grid">
+                    <div class="card"><div class="card-body"><span class="badge">Tronçon 1</span><h4 class="card-title">Elne → Le Boulou</h4><p class="card-text">Réhabilitation mineure. Voie exploitée, électrifiée et apte à la circulation quotidienne. Opération de bourrage et de meulage à prévoir.</p></div></div>
+                    <div class="card"><div class="card-body"><span class="badge">Tronçon 2</span><h4 class="card-title">Le Boulou → ZAC de Céret</h4><p class="card-text">Réhabilitation majeure&nbsp;: renouvellement des rails, traverses et ballast (RVB), et étude des 5 ponts de courte portée.</p></div></div>
+                    <div class="card"><div class="card-body"><span class="badge">Tronçon 3</span><h4 class="card-title">ZAC → ancienne gare de Céret</h4><p class="card-text">Voie verte préservée. Tronçon écarté de l'étude (viaduc sur le Tech, urbanisation). Le terminus est placé à la ZAC.</p></div></div>
+                </div>
+            </section>
+
+            <section class="section reveal">
+                <h2 class="block-title">Budget des travaux d'infrastructure</h2>
+                <p style="margin-bottom:1rem;color:#374151">Estimation HT à ±50&nbsp;%, hors électrification Le Boulou-Céret (≈ 7&nbsp;km, +10&nbsp;M€).</p>
+                <table class="data-table">
+                    <thead><tr><th>Poste de coût</th><th>En € (HT)</th></tr></thead>
+                    <tbody>
+                        <tr><td>Infrastructure Tronçon 1 (Elne-Boulou)</td><td>1 600 000</td></tr>
+                        <tr><td>Infrastructure Tronçon 2 (Boulou-Céret)</td><td>13 600 000</td></tr>
+                        <tr><td>Haltes</td><td>2 250 000</td></tr>
+                        <tr><td>Point de croisement (hors IS)</td><td>10 350 000</td></tr>
+                        <tr><td>Installation de sécurité</td><td>7 000 000</td></tr>
+                        <tr class="total"><td>Sous-total infrastructure</td><td>34 800 000</td></tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <section class="section reveal">
+                <h2 class="block-title">Les retombées attendues</h2>
+                <div class="cards-grid">
+                    <div class="card"><div class="card-body"><h4 class="card-title">🌍 Climat</h4><p class="card-text"><strong>−85&nbsp;%</strong> de CO₂ par voyageur·km vs voiture thermique. ~6&nbsp;% des émissions routières du Vallespir évitées et ~7&nbsp;% des objectifs du Plan Climat 2015-2030 remplis.</p></div></div>
+                    <div class="card"><div class="card-body"><h4 class="card-title">👥 Report modal</h4><p class="card-text"><strong>4&nbsp;271</strong> voyageurs potentiels (3&nbsp;377 navetteurs, 385 étudiants, 509 seniors). Entre <strong>2&nbsp;700 et 4&nbsp;500</strong> trajets routiers A/R évités par jour.</p></div></div>
+                    <div class="card"><div class="card-body"><h4 class="card-title">💶 Externalités</h4><p class="card-text"><strong>0,9 à 1,2&nbsp;M€</strong> d'externalités négatives évitées par an. Infrastructure autofinancée en <strong>30 à 40 ans</strong>.</p></div></div>
+                </div>
+            </section>
+
+            <section class="section reveal">
+                <h2 class="block-title">Quels financements&nbsp;?</h2>
+                <div class="panel prose" style="color:#374151">
+                    <ul>
+                        <li><strong>CPER mobilités 2023-2027 Occitanie&nbsp;:</strong> 1,6&nbsp;Md€ pour la mobilité (920&nbsp;M€ Région + 656&nbsp;M€ État), dont ~70&nbsp;% fléchés vers le ferroviaire.</li>
+                        <li><strong>Fonds européens&nbsp;:</strong> REACT-EU et FEDER — plus d'1&nbsp;Md€ pour l'Occitanie.</li>
+                        <li><strong>Plan de relance ferroviaire national&nbsp;:</strong> 100&nbsp;Md€ annoncés (transports du quotidien & décarbonation).</li>
+                        <li><strong>France 2030&nbsp;:</strong> soutien aux trains légers innovants (Ecotrain, Draisy, Flexmove…), pertinents pour les petites lignes.</li>
+                    </ul>
+                </div>
+            </section>
+        </div></div>
+    </main>
+
+    <!-- ====================== HORAIRES ====================== -->
+    <main id="page-horaires" class="page-content">
+        <div class="main"><div class="main-container">
+            <section class="section"><div class="section-header"><span class="badge">Concept horaire proposé</span><h1 class="section-title">Éloignez-vous de la bordure du quai…</h1><p class="section-subtitle">…attention au départ&nbsp;! Voici la grille horaire imaginée par l'étude de faisabilité&nbsp;: un train cadencé toutes les heures, dans les deux sens.</p></div></section>
+
+            <section class="section reveal">
+                <div class="next-train" id="nextTrainWidget2" style="margin-bottom:2rem">
+                    <h2 style="font-size:1.3rem">🚆 Prochains départs (simulation)</h2>
+                    <div class="next-train-grid">
+                        <div class="next-train-card"><div class="next-train-dir">Perpignan → Céret</div><div class="next-train-time" id="nextDepPerpignan2">--:--</div><div class="next-train-sub" id="nextDepPerpignanSub2"></div></div>
+                        <div class="next-train-card"><div class="next-train-dir">Céret → Perpignan</div><div class="next-train-time" id="nextDepCeret2">--:--</div><div class="next-train-sub" id="nextDepCeretSub2"></div></div>
+                    </div>
+                </div>
+
+                <div class="tt-toggle">
+                    <button id="ttBtnAller" class="active" onclick="switchTT('aller')">Perpignan → Céret</button>
+                    <button id="ttBtnRetour" onclick="switchTT('retour')">Céret → Perpignan</button>
+                </div>
+
+                <div class="timetable-wrap">
+                    <table class="tt" id="ttTable"><thead></thead><tbody></tbody></table>
+                </div>
+                <p style="margin-top:1rem;font-size:0.85rem;color:var(--gray)">Cadence à l'heure de 5h17 à 21h17 (sens Perpignan→Céret) et de 6h08 à 22h08 (sens Céret→Perpignan). Horaires indicatifs issus de l'étude de faisabilité, à titre d'illustration du service envisagé.</p>
+            </section>
+        </div></div>
+    </main>
+
+    <!-- ====================== HISTORIQUE ====================== -->
+    <main id="page-historique" class="page-content">
+        <div class="main"><div class="main-container">
+            <section class="section"><div class="section-header"><h1 class="section-title">Historique</h1><p class="section-subtitle">De la construction de la ligne d'Elne à Arles-sur-Tech à la mobilisation pour sa réouverture.</p></div></section>
+            <section class="section reveal"><div class="timeline">
+                <div class="timeline-item"><div class="timeline-date">31 janvier 1880</div><div class="timeline-title">Déclaration d'utilité publique</div><div class="timeline-description">Le « chemin de fer d'Elne à Arles-sur-Tech » est déclaré d'utilité publique par une loi du 31 janvier 1880.</div></div>
+                <div class="timeline-item"><div class="timeline-date">20 novembre 1883</div><div class="timeline-title">Concession à la Compagnie du Midi</div><div class="timeline-description">Une loi approuve la convention de concession définitive de la ligne à la Compagnie des chemins de fer du Midi.</div></div>
+                <div class="timeline-item highlight"><div class="timeline-date">18 août 1889</div><div class="timeline-title">Inauguration Elne — Céret</div><div class="timeline-description">Mise en service de la section entre les gares d'Elne et de Céret, qui désenclave le Vallespir.</div></div>
+                <div class="timeline-item"><div class="timeline-date">26 juin 1898</div><div class="timeline-title">Extension Céret — Arles-sur-Tech</div><div class="timeline-description">Ouverture au trafic de Céret à Arles-sur-Tech. 5 allers-retours quotidiens circulaient en 1926.</div></div>
+                <div class="timeline-item"><div class="timeline-date">1er janvier 1934</div><div class="timeline-title">Communauté d'intérêt des compagnies</div><div class="timeline-description">La Compagnie du Midi et du Canal latéral à la Garonne s'associe à la Compagnie de Paris à Orléans pour l'exploitation commune des deux réseaux.</div></div>
+                <div class="timeline-item"><div class="timeline-date">1er janvier 1938</div><div class="timeline-title">Nationalisation — création de la SNCF</div><div class="timeline-description">La SNCF récupère la concession de la ligne lors de la nationalisation des grandes compagnies.</div></div>
+                <div class="timeline-item highlight"><div class="timeline-date">23 mai 1940</div><div class="timeline-title">Fermeture au trafic voyageurs</div><div class="timeline-description">Fermeture totale de la ligne au service des voyageurs.</div></div>
+                <div class="timeline-item"><div class="timeline-date">17 octobre 1940</div><div class="timeline-title">Fermeture marchandises Amélie — Arles</div><div class="timeline-description">Après les inondations d'octobre 1940 qui endommagent gravement l'infrastructure entre Amélie-les-Bains et Arles-sur-Tech.</div></div>
+                <div class="timeline-item"><div class="timeline-date">9 juillet 1952</div><div class="timeline-title">Déclassement Amélie — Arles</div><div class="timeline-description">Déclassement de la section d'Amélie-les-Bains à Arles-sur-Tech.</div></div>
+                <div class="timeline-item"><div class="timeline-date">3 avril 1972</div><div class="timeline-title">Fermeture Céret — Amélie</div><div class="timeline-description">Fermeture de la section au service des marchandises entre Céret et Amélie-les-Bains.</div></div>
+                <div class="timeline-item"><div class="timeline-date">26 juillet 1973</div><div class="timeline-title">Déclassement Céret — Amélie</div><div class="timeline-description">Déclassement de la section de Céret à Amélie-les-Bains.</div></div>
+                <div class="timeline-item"><div class="timeline-date">18 septembre 1981</div><div class="timeline-title">Électrification Elne — Le Boulou</div><div class="timeline-description">La ligne est électrifiée en 1 500 V continu entre Elne et Le Boulou, en même temps que la ligne Narbonne — Port-Bou.</div></div>
+                <div class="timeline-item"><div class="timeline-date">1er janvier 1997</div><div class="timeline-title">Création de RFF</div><div class="timeline-description">Le réseau ferré national devient propriété de Réseau Ferré de France, gestionnaire jusqu'au 31 décembre 2014.</div></div>
+                <div class="timeline-item"><div class="timeline-date">2015</div><div class="timeline-title">Retour à la SNCF</div><div class="timeline-description">La SNCF redevient concessionnaire et exploitant. La ligne Elne-Le Boulou est réservée au trafic fret.</div></div>
+                <div class="timeline-item highlight"><div class="timeline-date">2023</div><div class="timeline-title">Pétition citoyenne</div><div class="timeline-description">« En Vallespir, demandons le retour du train Céret-Perpignan » réunit plus de 2 000 signataires.</div></div>
+                <div class="timeline-item highlight"><div class="timeline-date">28 novembre 2024</div><div class="timeline-title">Débat public à Céret</div><div class="timeline-description">L'étude de faisabilité initiée par la CGT Cheminots est présentée devant 150 citoyens. Elle confirme la viabilité du projet.</div></div>
+                <div class="timeline-item highlight"><div class="timeline-date">Aujourd'hui</div><div class="timeline-title">Mobilisation</div><div class="timeline-description">« Le train est le transport écologique de demain&nbsp;! La réoccupation de la voie ferrée historique ouvrira un nouveau chapitre pour le Vallespir. » — Osons le Rail&nbsp;!</div></div>
+            </div></section>
+        </div></div>
+    </main>
+
+    <!-- ====================== UNE LIGNE, DES ENVIES ====================== -->
+    <main id="page-une-ligne-des-envies" class="page-content">
+        <div class="main"><div class="main-container">
+            <section class="section"><div class="section-header"><h1 class="section-title">Une ligne, des envies&nbsp;?</h1><p class="section-subtitle">Découvrez les richesses du territoire desservi par la future ligne Céret-Perpignan.</p></div></section>
+            <section class="section reveal"><h2 class="block-title">🏛️ Patrimoine et culture</h2><div class="two-col">
+                <div class="prose"><h3 class="sub-title">Visiter</h3><ul><li>Le cloître d'Elne</li><li>Le Musée d'Art Moderne de Céret</li><li>Le Pont du Diable</li><li>Les villages du Haut Vallespir</li><li>Le patrimoine thermal</li><li>Les églises romanes</li></ul></div>
+                <div class="prose"><h3 class="sub-title">🍷 Gastronomie et terroir</h3><ul><li>Les cerises de Céret</li><li>Les vins du Roussillon</li><li>Les charcuteries catalanes</li><li>Les marchés locaux</li><li>Les restaurants du terroir</li></ul></div>
+            </div></section>
+            <section class="section reveal"><h2 class="block-title">🌿 Bien-être, nature et activités</h2><div class="two-col">
+                <div class="prose"><h3 class="sub-title">Bouger</h3><ul><li>Randonnée en montagne</li><li>VTT et cyclisme</li><li>Baignade en rivière</li><li>Escalade</li><li>Voie verte du Vallespir</li></ul></div>
+                <div class="prose"><h3 class="sub-title">Santé au naturel</h3><ul><li>Cure thermale d'Amélie-les-Bains</li><li>23&nbsp;% des curistes nationaux sont accueillis dans les P.-O. — 1ʳᵉ destination thermale de France.</li></ul></div>
+            </div>
+            <p style="text-align:center;margin-top:2rem;font-size:1.1rem;font-weight:600;color:var(--primary-dark)">Le retour du train facilitera l'accès à toutes ces richesses, de manière écologique et confortable.</p>
+            </section>
+        </div></div>
+    </main>
+
+    <!-- ====================== TRAINS DU 66 ====================== -->
+    <main id="page-trains-du-66" class="page-content">
+        <div class="main"><div class="main-container">
+            <section class="section"><div class="section-header"><h1 class="section-title">À chaque territoire son train</h1><p class="section-subtitle">Le Train Jaune et le Train Rouge prouvent que le rail est un formidable vecteur de développement. Ils inspirent notre projet.</p></div></section>
+            <section class="section reveal"><div class="two-col" style="gap:2rem">
+                <div class="panel">
+                    <h3 class="sub-title">🟡 Le Train Jaune</h3>
+                    <p class="prose">Le célèbre train jaune de Cerdagne relie Villefranche-de-Conflent à Latour-de-Carol — 63&nbsp;km, 21 gares. Un voyage spectaculaire à travers les montagnes catalanes, exploité par <strong>Lio</strong>.</p>
+                    <ul class="prose"><li>Fonctionne toute l'année (offre régulière + touristique)</li><li>Trajet complet&nbsp;: ~3h, 22,50&nbsp;€ hors promo</li><li>Voyages scolaires et parcours touristiques</li></ul>
+                    <a href="https://www.ter.sncf.com/occitanie/loisirs/train-jaune" class="btn btn-primary btn-sm" target="_blank" rel="noopener">🔗 En savoir plus</a>
+                </div>
+                <div class="panel">
+                    <h3 class="sub-title">🔴 Le Train Rouge</h3>
+                    <p class="prose">Train touristique reliant Rivesaltes à Axat — 58&nbsp;km, 25 arrêts — à travers les gorges de l'Aude. Porté par le Syndicat Mixte du Train touristique du Pays Cathare et du Fenouillèdes (SMTPCF) et exploité par la SARL TPCF.</p>
+                    <ul class="prose"><li>Circule d'avril à octobre</li><li>Train gastronomique, vélorail, jeux de piste scolaires</li><li>Flotte au biocarburant depuis 2023</li></ul>
+                    <div style="display:flex; gap:0.5rem; flex-wrap:wrap; margin-top:0.5rem">
+                        <a href="https://www.lavalleedutrainrouge.fr/" class="btn btn-secondary btn-sm" target="_blank" rel="noopener" style="color:var(--primary-dark);border-color:var(--primary);background:white">🌐 Site web</a>
+                        <a href="https://www.facebook.com/letrainrougetpcf/" class="btn btn-secondary btn-sm" target="_blank" rel="noopener" style="color:var(--primary-dark);border-color:var(--primary);background:white">📘 Facebook</a>
+                        <a href="https://www.instagram.com/letrainrouge_tpcf/" class="btn btn-secondary btn-sm" target="_blank" rel="noopener" style="color:var(--primary-dark);border-color:var(--primary);background:white">📷 Instagram</a>
+                        <a href="mailto:info@letrainrouge.fr" class="btn btn-secondary btn-sm" style="color:var(--primary-dark);border-color:var(--primary);background:white">✉️ Contact</a>
+                    </div>
+                </div>
+            </div></section>
+            <section class="section reveal" style="text-align:center">
+                <div class="panel" style="max-width:760px;margin:0 auto">
+                    <h2 class="block-title">Pourquoi ces trains comptent</h2>
+                    <p class="lead">Ces lignes démontrent que le rail peut être un vecteur de développement économique, touristique et écologique, en associant usagers locaux et tourisme. Le Train Rouge a même relancé le fret local abandonné par la SNCF, préservant ainsi sa ligne. Un modèle inspirant pour Perpignan-Céret.</p>
+                </div>
+            </section>
+        </div></div>
+    </main>
+
+    <!-- ====================== CONTACTS ====================== -->
+    <main id="page-contacts" class="page-content">
+        <div class="main"><div class="main-container">
+            <section class="section"><div class="section-header"><h1 class="section-title">Contacts</h1><p class="section-subtitle">Comment nous joindre et nous soutenir.</p></div></section>
+            <section class="section reveal"><div class="two-col">
+                <div>
+                    <h2 class="block-title">📍 Nos coordonnées</h2>
+                    <div class="panel panel-accent prose">
+                        <p><strong>Osons le Rail&nbsp;!</strong></p>
+                        <p>2 rue Jean Amade<br>66400 Céret</p>
+                        <p>✉️ <a href="mailto:osonslerail@laposte.net" style="color:var(--primary-dark)">osonslerail@laposte.net</a></p>
+                    </div>
+                    <div style="margin-top:1.5rem">
+                        <h3 class="sub-title">🤝 Nous soutenir</h3>
+                        <div style="display:flex;gap:0.75rem;flex-wrap:wrap">
+                            <a href="https://www.helloasso.com/associations/osons-le-rail" class="btn btn-primary btn-sm" target="_blank" rel="noopener">🎟️ Adhérer</a>
+                            <a href="https://chng.it/LD7MkBFDLm" class="btn btn-primary btn-sm" target="_blank" rel="noopener">✍️ Signer la pétition</a>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <h2 class="block-title">💬 Contactez-nous</h2>
+                    <form id="contactForm" class="panel">
+                        <div style="margin-bottom:1rem"><input type="text" id="contactName" placeholder="Votre nom" style="width:100%;padding:0.75rem;border:1px solid var(--gray-light);border-radius:var(--radius);font-size:1rem" required /></div>
+                        <div style="margin-bottom:1rem"><input type="email" id="contactEmail" placeholder="Votre email" style="width:100%;padding:0.75rem;border:1px solid var(--gray-light);border-radius:var(--radius);font-size:1rem" required /></div>
+                        <div style="margin-bottom:1rem"><textarea id="contactMessage" placeholder="Votre message" rows="5" style="width:100%;padding:0.75rem;border:1px solid var(--gray-light);border-radius:var(--radius);font-size:1rem;resize:vertical" required></textarea></div>
+                        <button type="submit" class="btn btn-primary"><span id="contactButtonText">Envoyer</span><span id="contactLoading" class="loading" style="display:none"></span></button>
+                    </form>
+                </div>
+            </div></section>
+        </div></div>
+    </main>
+
+    <!-- ====================== FOOTER ====================== -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-row">
+                <div class="footer-info">
+                    <p style="font-size:1.2rem;font-weight:700;margin-bottom:0.75rem">🚆 Osons le Rail&nbsp;!</p>
+                    <p>2 rue Jean Amade, 66400 Céret</p>
+                    <p><a href="mailto:osonslerail@laposte.net">osonslerail@laposte.net</a></p>
+                    <p style="margin-top:0.75rem;opacity:0.8;font-size:0.9rem">Pour la réouverture de la ligne Perpignan-Céret.</p>
+                </div>
+                <div class="footer-col">
+                    <h3>Navigation</h3>
+                    <ul>
+                        <li><a onclick="navigateTo('accueil')">Accueil</a></li>
+                        <li><a onclick="navigateTo('qui-sommes-nous')">Qui sommes-nous&nbsp;?</a></li>
+                        <li><a onclick="navigateTo('notre-projet')">Notre projet</a></li>
+                        <li><a onclick="navigateTo('horaires')">Horaires</a></li>
+                        <li><a onclick="navigateTo('historique')">Historique</a></li>
+                        <li><a onclick="navigateTo('une-ligne-des-envies')">Une ligne, des envies</a></li>
+                        <li><a onclick="navigateTo('trains-du-66')">Les trains du 66</a></li>
+                        <li><a onclick="navigateTo('contacts')">Contacts</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Rejoignez-nous</h3>
+                    <ul>
+                        <li><a href="https://www.helloasso.com/associations/osons-le-rail" target="_blank" rel="noopener">🎟️ Adhérer via HelloAsso</a></li>
+                        <li><a href="https://chng.it/LD7MkBFDLm" target="_blank" rel="noopener">✍️ Signer la pétition</a></li>
+                        <li><a href="#" target="_blank" rel="noopener">📷 Instagram</a></li>
+                        <li><a href="#" target="_blank" rel="noopener">📘 Facebook</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>© <span id="year">2026</span> Association Osons le Rail&nbsp;! — Tous droits réservés</p>
+                <p style="margin-top:0.5rem"><a href="#">Mentions légales</a> · <a href="#">Politique RGPD</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <div id="toast" class="toast"><span class="toast-icon">✓</span><span class="toast-message"></span></div>
+
+    <script>
+        /* ---------- Données horaires (cadence à l'heure) ---------- */
+        const STATIONS_ALLER = ['Perpignan','Elne','Ortaffa-Brouilla','Banyuls-dels-Aspres','Le Boulou','Saint-Jean-Pla-de-Corts','Céret'];
+        const OFFSETS_ALLER = [0,8,13,18,24,29,34]; // minutes après le départ de Perpignan (:17)
+        const STATIONS_RETOUR = ['Céret','Saint-Jean-Pla-de-Corts','Le Boulou','Banyuls-dels-Aspres','Ortaffa-Brouilla','Elne','Perpignan'];
+        const OFFSETS_RETOUR = [0,6,10,16,22,28,38]; // minutes après le départ de Céret (:08)
+        const ALLER_START = 5, ALLER_END = 21, ALLER_MIN = 17; // Perpignan départs 05:17 -> 21:17
+        const RETOUR_START = 6, RETOUR_END = 22, RETOUR_MIN = 8; // Céret départs 06:08 -> 22:08
+
+        function pad(n){ return n.toString().padStart(2,'0'); }
+        function fmt(totalMin){ totalMin=((totalMin%1440)+1440)%1440; return pad(Math.floor(totalMin/60))+':'+pad(totalMin%60); }
+
+        function buildTimes(startH, endH, baseMin, offsets){
+            const trains=[];
+            for(let h=startH; h<=endH; h++){
+                const dep = h*60 + baseMin;
+                trains.push(offsets.map(o => dep + o));
+            }
+            return trains;
+        }
+        const ALLER = buildTimes(ALLER_START, ALLER_END, ALLER_MIN, OFFSETS_ALLER);
+        const RETOUR = buildTimes(RETOUR_START, RETOUR_END, RETOUR_MIN, OFFSETS_RETOUR);
+
+        function renderTable(dir){
+            const stations = dir==='aller'?STATIONS_ALLER:STATIONS_RETOUR;
+            const trains = dir==='aller'?ALLER:RETOUR;
+            const table = document.getElementById('ttTable');
+            let thead='<tr><th>Gare</th>';
+            trains.forEach((_,i)=> thead+='<th>'+(i+1)+'</th>');
+            thead+='</tr>';
+            let tbody='';
+            stations.forEach((st,si)=>{
+                tbody+='<tr><th>'+st+'</th>';
+                trains.forEach(tr=> tbody+='<td>'+fmt(tr[si])+'</td>');
+                tbody+='</tr>';
+            });
+            table.querySelector('thead').innerHTML=thead;
+            table.querySelector('tbody').innerHTML=tbody;
+        }
+        function switchTT(dir){
+            document.getElementById('ttBtnAller').classList.toggle('active', dir==='aller');
+            document.getElementById('ttBtnRetour').classList.toggle('active', dir==='retour');
+            renderTable(dir);
+        }
+
+        /* ---------- Prochain départ ---------- */
+        function nextDeparture(trains){
+            const now = new Date();
+            const cur = now.getHours()*60 + now.getMinutes();
+            for(const tr of trains){ if(tr[0] > cur) return tr[0]; }
+            return null; // plus de train aujourd'hui
+        }
+        function updateNextTrains(){
+            const nA = nextDeparture(ALLER);
+            const nR = nextDeparture(RETOUR);
+            const set = (idT, idS, val) => {
+                const t=document.getElementById(idT), s=document.getElementById(idS);
+                if(!t) return;
+                if(val===null){ t.textContent='—'; if(s) s.textContent='Service terminé pour aujourd\'hui'; }
+                else {
+                    t.textContent=fmt(val);
+                    const now=new Date(); const cur=now.getHours()*60+now.getMinutes();
+                    const mins=val-cur;
+                    if(s) s.textContent = mins<=60 ? ('dans '+mins+' min') : 'prochain départ';
+                }
+            };
+            set('nextDepPerpignan','nextDepPerpignanSub',nA);
+            set('nextDepCeret','nextDepCeretSub',nR);
+            set('nextDepPerpignan2','nextDepPerpignanSub2',nA);
+            set('nextDepCeret2','nextDepCeretSub2',nR);
+        }
+
+        /* ---------- Navigation SPA ---------- */
+        function navigateTo(page){
+            document.querySelectorAll('.page-content').forEach(p=>p.classList.remove('active'));
+            const el=document.getElementById('page-'+page);
+            if(el){
+                el.classList.add('active');
+                document.querySelectorAll('.nav a').forEach(l=>{
+                    l.classList.toggle('active', l.getAttribute('data-page')===page);
+                });
+                window.scrollTo({top:0,behavior:'smooth'});
+                if(history.replaceState) history.replaceState(null,'','#'+page);
+                runReveal();
+                animateCounters();
+            }
+            document.querySelector('.nav')?.classList.remove('active');
+        }
+
+        /* ---------- Toast ---------- */
+        function showToast(message, type='success'){
+            const toast=document.getElementById('toast'); if(!toast) return;
+            toast.querySelector('.toast-message').textContent=message;
+            toast.querySelector('.toast-icon').textContent={success:'✓',error:'✗',info:'ℹ️'}[type]||'ℹ️';
+            toast.className='toast show '+type;
+            setTimeout(()=>toast.classList.remove('show'),4000);
+        }
+
+        /* ---------- Reveal on scroll ---------- */
+        let revealObserver;
+        function runReveal(){
+            const items=document.querySelectorAll('.page-content.active .reveal:not(.visible)');
+            if(!revealObserver){
+                revealObserver=new IntersectionObserver((entries)=>{
+                    entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('visible'); revealObserver.unobserve(e.target);} });
+                },{threshold:0.12});
+            }
+            items.forEach(i=>revealObserver.observe(i));
+        }
+
+        /* ---------- Animated counters ---------- */
+        function animateCounters(){
+            document.querySelectorAll('.page-content.active [data-count]:not([data-done])').forEach(el=>{
+                const target=parseInt(el.getAttribute('data-count'),10);
+                const suffix=el.getAttribute('data-suffix')||'';
+                el.setAttribute('data-done','1');
+                const dur=1200, t0=performance.now();
+                function step(t){
+                    const p=Math.min((t-t0)/dur,1);
+                    const val=Math.floor((1-Math.pow(1-p,3))*target);
+                    el.textContent=val.toLocaleString('fr-FR')+suffix;
+                    if(p<1) requestAnimationFrame(step); else el.textContent=target.toLocaleString('fr-FR')+suffix;
+                }
+                requestAnimationFrame(step);
+            });
+        }
+
+        /* ---------- Setup ---------- */
+        document.addEventListener('DOMContentLoaded',function(){
+            document.getElementById('year').textContent=new Date().getFullYear();
+            renderTable('aller');
+            updateNextTrains();
+            setInterval(updateNextTrains,30000);
+
+            const navToggle=document.querySelector('.nav-toggle'), nav=document.querySelector('.nav');
+            navToggle&&nav&&navToggle.addEventListener('click',()=>nav.classList.toggle('active'));
+            document.querySelectorAll('.nav a[data-page]').forEach(l=>{
+                l.addEventListener('click',e=>{e.preventDefault();navigateTo(l.getAttribute('data-page'));});
+            });
+
+            // deep-link via hash
+            const hash=location.hash.replace('#','');
+            if(hash && document.getElementById('page-'+hash)) navigateTo(hash); else { runReveal(); animateCounters(); }
+
+            // Newsletter
+            const nf=document.getElementById('newsletterForm');
+            nf&&nf.addEventListener('submit',e=>{
+                e.preventDefault();
+                const email=document.getElementById('newsletterEmail').value;
+                if(!email||!email.includes('@')||!email.includes('.')){showToast('Email invalide','error');return;}
+                const bt=document.getElementById('newsletterButtonText'),ld=document.getElementById('newsletterLoading');
+                bt.style.display='none';ld.style.display='inline-block';
+                setTimeout(()=>{nf.reset();bt.style.display='inline';ld.style.display='none';showToast('Merci pour votre inscription !','success');},1200);
+            });
+
+            // Contact
+            const cf=document.getElementById('contactForm');
+            cf&&cf.addEventListener('submit',e=>{
+                e.preventDefault();
+                const n=document.getElementById('contactName').value,em=document.getElementById('contactEmail').value,m=document.getElementById('contactMessage').value;
+                if(!n||!em||!m){showToast('Veuillez remplir tous les champs','error');return;}
+                if(!em.includes('@')||!em.includes('.')){showToast('Email invalide','error');return;}
+                const bt=document.getElementById('contactButtonText'),ld=document.getElementById('contactLoading');
+                bt.style.display='none';ld.style.display='inline-block';
+                setTimeout(()=>{cf.reset();bt.style.display='inline';ld.style.display='none';showToast('Message envoyé ! Réponse sous 48h.','success');},1200);
+            });
+        });
+    </script>
+</body>
+</html>
