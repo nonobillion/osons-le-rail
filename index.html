@@ -46,12 +46,12 @@
         /* HEADER */
         .header { background: var(--dark); color: white; padding: 0.75rem 0; position: sticky; top: 0; z-index: 100; box-shadow: 0 1px 0 rgba(255,255,255,0.06), var(--shadow); border-bottom: 3px solid var(--primary); }
         .header-container { max-width: 1340px; margin: 0 auto; padding: 0 1rem; display: flex; justify-content: space-between; align-items: center; gap: 1rem; }
-        .logo { display: flex; align-items: center; gap: 0.6rem; font-size: 1.3rem; font-weight: 700; cursor: pointer; flex-shrink: 0; }
-        .logo-icon { width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+        .logo { display: flex; align-items: center; gap: 0.55rem; font-size: 1.15rem; font-weight: 700; cursor: pointer; flex-shrink: 0; }
+        .logo-icon { width: 36px; height: 36px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
         .logo-icon img { width: 100%; height: 100%; display: block; }
         .nav-toggle { display: none; background: none; border: none; color: white; font-size: 1.6rem; cursor: pointer; line-height: 1; }
-        .nav { display: flex; gap: 0.1rem; list-style: none; flex-wrap: nowrap; align-items: center; }
-        .nav a { color: white; text-decoration: none; padding: 0.45rem 0.55rem; border-radius: var(--radius); transition: all 0.2s; font-weight: 500; cursor: pointer; white-space: nowrap; font-size: 0.9rem; }
+        .nav { display: flex; gap: 0.04rem; list-style: none; flex-wrap: nowrap; align-items: center; }
+        .nav a { color: white; text-decoration: none; padding: 0.4rem 0.4rem; border-radius: var(--radius); transition: all 0.2s; font-weight: 500; cursor: pointer; white-space: nowrap; font-size: 0.8rem; }
         .nav a:hover { background: rgba(255, 255, 255, 0.12); }
         .nav a.active { background: var(--primary); }
 
@@ -214,9 +214,10 @@
         .reveal.visible { opacity: 1; transform: none; }
         .badge { display: inline-block; background: var(--primary-light); color: var(--primary-dark); padding: 0.2rem 0.7rem; border-radius: 999px; font-size: 0.8rem; font-weight: 600; margin-bottom: 0.75rem; }
 
-        /* RESPONSIVE — nav collapses to a menu button as soon as the 8 tabs
-           no longer fit on one line, so they never wrap */
-        @media (max-width: 1300px) {
+        /* RESPONSIVE — nav collapses to a menu button as soon as the tabs
+           no longer fit on one line, so they never wrap (covers laptops at
+           125% Windows scaling, e.g. 1366px → ~1093px effective) */
+        @media (max-width: 1040px) {
             .nav-toggle { display: block; }
             .nav { position: absolute; top: 100%; left: 0; right: 0; background: var(--dark); flex-direction: column; padding: 0.75rem; gap: 0.2rem; display: none; align-items: stretch; box-shadow: var(--shadow-lg); flex-wrap: nowrap; }
             .nav.active { display: flex; }
@@ -249,10 +250,10 @@
                     <li><a data-page="qui-sommes-nous">Qui sommes-nous&nbsp;?</a></li>
                     <li><a data-page="notre-projet">Notre projet</a></li>
                     <li><a data-page="horaires">Horaires</a></li>
-                    <li><a data-page="nos-publications">Nos publications</a></li>
+                    <li><a data-page="nos-publications">Publications</a></li>
                     <li><a data-page="historique">Historique</a></li>
                     <li><a data-page="une-ligne-des-envies">Une ligne, des envies</a></li>
-                    <li><a data-page="trains-du-66">Trains du 66 &amp; soutiens</a></li>
+                    <li><a data-page="trains-du-66">Trains du 66</a></li>
                     <li><a data-page="contacts">Contacts</a></li>
                 </ul>
             </nav>
@@ -597,18 +598,18 @@
         <div class="main"><div class="main-container">
             <section class="section"><div class="section-header"><h1 class="section-title">Historique</h1><p class="section-subtitle">De la construction de la ligne d'Elne à Arles-sur-Tech à la mobilisation pour sa réouverture.</p></div></section>
             <section class="section reveal"><div class="timeline">
-                <div class="timeline-item"><div class="timeline-date">1872</div><div class="timeline-title">Premières études</div><div class="timeline-description">À la suite d'une demande du Conseil général, des études pour un chemin de fer de Perpignan à Arles-sur-Tech sont réalisées.</div></div>
-                <div class="timeline-item"><div class="timeline-date">31 janvier 1880</div><div class="timeline-title">Déclaration d'utilité publique</div><div class="timeline-description">Le « chemin de fer d'Elne à Arles-sur-Tech » est déclaré d'utilité publique à titre d'intérêt général par une loi du 31 janvier 1880. Ce texte autorise le ministre des travaux publics à ouvrir le chantier de construction.</div></div>
-                <div class="timeline-item"><div class="timeline-date">1882</div><div class="timeline-title">Début des travaux</div><div class="timeline-description">Les travaux débutent. Le chantier est réalisé en trois sections&nbsp;: Elne au Boulou, du Boulou à Céret et de Céret à Arles-sur-Tech. En 1883, le crédit ouvert est de 650 000 francs&nbsp;: il comprend notamment, sur la première section, l'agrandissement de la gare d'Elne et le raccordement à la ligne de Narbonne à Port-Bou (frontière).</div></div>
-                <div class="timeline-item"><div class="timeline-date">20 novembre 1883</div><div class="timeline-title">Convention avec la Compagnie du Midi</div><div class="timeline-description">Une loi approuve la convention conclue entre la Compagnie des chemins de fer du Midi et du Canal latéral à la Garonne et le ministre des travaux publics, qui précise la concession à titre définitif de la ligne d'Elne à Arles-sur-Tech&nbsp;: l'État réalise les achats de terrains, terrassements, ouvrages d'art, stations, maisons de garde et passages à niveau (décisions de tracé prises avec la compagnie)&nbsp;; la compagnie prend en charge les superstructures et met en service les sections terminées.</div></div>
-                <div class="timeline-item highlight"><div class="timeline-date">18 août 1889</div><div class="timeline-title">Inauguration Elne — Céret</div><div class="timeline-description">Mise en service de la section entre les gares d'Elne et de Céret, qui désenclave le Vallespir.</div></div>
-                <div class="timeline-item"><div class="timeline-date">26 juin 1898</div><div class="timeline-title">Extension Céret — Arles-sur-Tech</div><div class="timeline-description">Ouverture au trafic de Céret à Arles-sur-Tech. 5 allers-retours quotidiens circulaient en 1926.</div></div>
-                <div class="timeline-item highlight"><div class="timeline-date">23 mai 1940</div><div class="timeline-title">Fermeture au trafic voyageurs</div><div class="timeline-description">Fermeture totale de la ligne au service des voyageurs, après 42 ans de fonctionnement.</div></div>
-                <div class="timeline-item"><div class="timeline-date">18 septembre 1981</div><div class="timeline-title">Électrification Elne — Le Boulou</div><div class="timeline-description">La ligne est électrifiée en 1 500 V continu entre Elne et Le Boulou, en même temps que la ligne Narbonne — Port-Bou.</div></div>
-                <div class="timeline-item highlight"><div class="timeline-date">10 février 2001</div><div class="timeline-title">Création de l'association Osons le Rail</div><div class="timeline-description">Parution au Journal Officiel, suite à la déclaration à la sous-préfecture de Céret le 12 décembre 2000. Objet&nbsp;: ouverture aux trains de voyageurs et défense de la ligne SNCF Perpignan - Elne - Le Boulou - Céret, et la desserte du Vallespir.</div></div>
-                <div class="timeline-item highlight"><div class="timeline-date">2023</div><div class="timeline-title">Pétition citoyenne</div><div class="timeline-description">« En Vallespir, demandons le retour du train Céret-Perpignan » réunit plus de 2 000 signataires.</div></div>
-                <div class="timeline-item highlight"><div class="timeline-date">28 novembre 2024</div><div class="timeline-title">Débat public à Céret</div><div class="timeline-description">L'étude de faisabilité initiée par la CGT Cheminots est présentée devant 150 citoyens. Elle confirme la viabilité du projet.</div></div>
                 <div class="timeline-item highlight"><div class="timeline-date">13 février 2026</div><div class="timeline-title">Débat public à Le Boulou</div><div class="timeline-description">L'étude est présentée à une centaine de personnes.</div></div>
+                <div class="timeline-item highlight"><div class="timeline-date">28 novembre 2024</div><div class="timeline-title">Débat public à Céret</div><div class="timeline-description">L'étude de faisabilité initiée par la CGT Cheminots est présentée devant 150 citoyens. Elle confirme la viabilité du projet.</div></div>
+                <div class="timeline-item highlight"><div class="timeline-date">2023</div><div class="timeline-title">Pétition citoyenne</div><div class="timeline-description">« En Vallespir, demandons le retour du train Céret-Perpignan » réunit plus de 2 000 signataires.</div></div>
+                <div class="timeline-item highlight"><div class="timeline-date">10 février 2001</div><div class="timeline-title">Création de l'association Osons le Rail</div><div class="timeline-description">Parution au Journal Officiel, suite à la déclaration à la sous-préfecture de Céret le 12 décembre 2000. Objet&nbsp;: ouverture aux trains de voyageurs et défense de la ligne SNCF Perpignan - Elne - Le Boulou - Céret, et la desserte du Vallespir.</div></div>
+                <div class="timeline-item"><div class="timeline-date">18 septembre 1981</div><div class="timeline-title">Électrification Elne — Le Boulou</div><div class="timeline-description">La ligne est électrifiée en 1 500 V continu entre Elne et Le Boulou, en même temps que la ligne Narbonne — Port-Bou.</div></div>
+                <div class="timeline-item highlight"><div class="timeline-date">23 mai 1940</div><div class="timeline-title">Fermeture au trafic voyageurs</div><div class="timeline-description">Fermeture totale de la ligne au service des voyageurs, après 42 ans de fonctionnement.</div></div>
+                <div class="timeline-item"><div class="timeline-date">26 juin 1898</div><div class="timeline-title">Extension Céret — Arles-sur-Tech</div><div class="timeline-description">Ouverture au trafic de Céret à Arles-sur-Tech. 5 allers-retours quotidiens circulaient en 1926.</div></div>
+                <div class="timeline-item highlight"><div class="timeline-date">18 août 1889</div><div class="timeline-title">Inauguration Elne — Céret</div><div class="timeline-description">Mise en service de la section entre les gares d'Elne et de Céret, qui désenclave le Vallespir.</div></div>
+                <div class="timeline-item"><div class="timeline-date">20 novembre 1883</div><div class="timeline-title">Convention avec la Compagnie du Midi</div><div class="timeline-description">Une loi approuve la convention conclue entre la Compagnie des chemins de fer du Midi et du Canal latéral à la Garonne et le ministre des travaux publics, qui précise la concession à titre définitif de la ligne d'Elne à Arles-sur-Tech&nbsp;: l'État réalise les achats de terrains, terrassements, ouvrages d'art, stations, maisons de garde et passages à niveau (décisions de tracé prises avec la compagnie)&nbsp;; la compagnie prend en charge les superstructures et met en service les sections terminées.</div></div>
+                <div class="timeline-item"><div class="timeline-date">1882</div><div class="timeline-title">Début des travaux</div><div class="timeline-description">Les travaux débutent. Le chantier est réalisé en trois sections&nbsp;: Elne au Boulou, du Boulou à Céret et de Céret à Arles-sur-Tech. En 1883, le crédit ouvert est de 650 000 francs&nbsp;: il comprend notamment, sur la première section, l'agrandissement de la gare d'Elne et le raccordement à la ligne de Narbonne à Port-Bou (frontière).</div></div>
+                <div class="timeline-item"><div class="timeline-date">31 janvier 1880</div><div class="timeline-title">Déclaration d'utilité publique</div><div class="timeline-description">Le « chemin de fer d'Elne à Arles-sur-Tech » est déclaré d'utilité publique à titre d'intérêt général par une loi du 31 janvier 1880. Ce texte autorise le ministre des travaux publics à ouvrir le chantier de construction.</div></div>
+                <div class="timeline-item"><div class="timeline-date">1872</div><div class="timeline-title">Premières études</div><div class="timeline-description">À la suite d'une demande du Conseil général, des études pour un chemin de fer de Perpignan à Arles-sur-Tech sont réalisées.</div></div>
             </div></section>
         </div></div>
     </main>
