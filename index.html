@@ -45,13 +45,13 @@
 
         /* HEADER */
         .header { background: var(--dark); color: white; padding: 0.75rem 0; position: sticky; top: 0; z-index: 100; box-shadow: 0 1px 0 rgba(255,255,255,0.06), var(--shadow); border-bottom: 3px solid var(--primary); }
-        .header-container { max-width: 1200px; margin: 0 auto; padding: 0 1rem; display: flex; justify-content: space-between; align-items: center; }
-        .logo { display: flex; align-items: center; gap: 0.75rem; font-size: 1.4rem; font-weight: 700; cursor: pointer; }
-        .logo-icon { width: 42px; height: 42px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+        .header-container { max-width: 1340px; margin: 0 auto; padding: 0 1rem; display: flex; justify-content: space-between; align-items: center; gap: 1rem; }
+        .logo { display: flex; align-items: center; gap: 0.6rem; font-size: 1.3rem; font-weight: 700; cursor: pointer; flex-shrink: 0; }
+        .logo-icon { width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
         .logo-icon img { width: 100%; height: 100%; display: block; }
         .nav-toggle { display: none; background: none; border: none; color: white; font-size: 1.6rem; cursor: pointer; line-height: 1; }
-        .nav { display: flex; gap: 0.25rem; list-style: none; flex-wrap: wrap; align-items: center; }
-        .nav a { color: white; text-decoration: none; padding: 0.5rem 0.7rem; border-radius: var(--radius); transition: all 0.2s; font-weight: 500; cursor: pointer; white-space: nowrap; font-size: 0.95rem; }
+        .nav { display: flex; gap: 0.1rem; list-style: none; flex-wrap: nowrap; align-items: center; }
+        .nav a { color: white; text-decoration: none; padding: 0.45rem 0.55rem; border-radius: var(--radius); transition: all 0.2s; font-weight: 500; cursor: pointer; white-space: nowrap; font-size: 0.9rem; }
         .nav a:hover { background: rgba(255, 255, 255, 0.12); }
         .nav a.active { background: var(--primary); }
 
@@ -214,12 +214,16 @@
         .reveal.visible { opacity: 1; transform: none; }
         .badge { display: inline-block; background: var(--primary-light); color: var(--primary-dark); padding: 0.2rem 0.7rem; border-radius: 999px; font-size: 0.8rem; font-weight: 600; margin-bottom: 0.75rem; }
 
-        /* RESPONSIVE */
-        @media (max-width: 860px) {
+        /* RESPONSIVE — nav collapses to a menu button as soon as the 8 tabs
+           no longer fit on one line, so they never wrap */
+        @media (max-width: 1300px) {
             .nav-toggle { display: block; }
-            .nav { position: absolute; top: 100%; left: 0; right: 0; background: var(--dark); flex-direction: column; padding: 0.75rem; gap: 0.2rem; display: none; align-items: stretch; box-shadow: var(--shadow-lg); }
+            .nav { position: absolute; top: 100%; left: 0; right: 0; background: var(--dark); flex-direction: column; padding: 0.75rem; gap: 0.2rem; display: none; align-items: stretch; box-shadow: var(--shadow-lg); flex-wrap: nowrap; }
             .nav.active { display: flex; }
-            .nav a { padding: 0.7rem 0.8rem; }
+            .nav a { padding: 0.7rem 0.8rem; font-size: 1rem; }
+        }
+
+        @media (max-width: 860px) {
             .hero h1 { font-size: 2rem; }
             .hero p { font-size: 1.05rem; }
             .two-col { grid-template-columns: 1fr; gap: 2rem; }
@@ -245,9 +249,10 @@
                     <li><a data-page="qui-sommes-nous">Qui sommes-nous&nbsp;?</a></li>
                     <li><a data-page="notre-projet">Notre projet</a></li>
                     <li><a data-page="horaires">Horaires</a></li>
+                    <li><a data-page="nos-publications">Nos publications</a></li>
                     <li><a data-page="historique">Historique</a></li>
                     <li><a data-page="une-ligne-des-envies">Une ligne, des envies</a></li>
-                    <li><a data-page="trains-du-66">Les trains du 66</a></li>
+                    <li><a data-page="trains-du-66">Trains du 66 &amp; soutiens</a></li>
                     <li><a data-page="contacts">Contacts</a></li>
                 </ul>
             </nav>
@@ -262,7 +267,7 @@
                 <h1>Le train direct Perpignan&nbsp;/&nbsp;Céret</h1>
                 <p>Ensemble, redonnons vie à la ligne ferroviaire historique du Vallespir. Un transport écologique, économique et au service de tous&nbsp;: l'agglomération de Perpignan, les Albères, les Aspres et le Vallespir.</p>
                 <div class="hero-cta">
-                    <a href="https://www.helloasso.com/associations/osons-le-rail" class="btn btn-primary" target="_blank" rel="noopener">🎟️ Adhérer via HelloAsso</a>
+                    <a href="https://www.helloasso.com/associations/osons-le-rail/adhesions/adhesion-osons-le-rail-2026" class="btn btn-primary" target="_blank" rel="noopener">🎟️ Adhérer 2026 via HelloAsso</a>
                     <a href="https://chng.it/LD7MkBFDLm" class="btn btn-secondary" target="_blank" rel="noopener">✍️ Signer la pétition</a>
                 </div>
             </div>
@@ -326,36 +331,12 @@
                             <p style="margin-top:1rem;font-size:0.85rem;opacity:0.8">Vos données sont protégées (RGPD).</p>
                         </div>
                         <div style="flex: 1; min-width: 240px; display: flex; flex-direction: column; gap: 1rem; justify-content: center">
-                            <a href="#" target="_blank" rel="noopener" class="btn" style="background:#e4405f;color:white;justify-content:center">📷 Instagram</a>
-                            <a href="#" target="_blank" rel="noopener" class="btn" style="background:#1877f2;color:white;justify-content:center">📘 Facebook</a>
+                            <a href="https://www.instagram.com/osonslerail" target="_blank" rel="noopener" class="btn" style="background:#e4405f;color:white;justify-content:center">📷 Instagram @osonslerail</a>
                             <a href="mailto:osonslerail@laposte.net" class="btn btn-primary" style="justify-content:center">✉️ Nous écrire</a>
                         </div>
                     </div>
                 </section>
 
-                <section class="section reveal">
-                    <div class="section-header"><h2 class="section-title">Ensemble — nos partenaires</h2><p class="section-subtitle">Adhérents individuels, collectifs et institutionnels mobilisés pour le projet.</p></div>
-                    <div class="partners-grid">
-                        <div class="partner-logo"><img src="logos/ceret.png" alt="Ville de Céret" loading="lazy" /></div>
-                        <div class="partner-logo"><img src="logos/departement-66.png" alt="Département des Pyrénées-Orientales" loading="lazy" /></div>
-                        <div class="partner-logo"><img src="logos/occitanie.png" alt="Région Occitanie / Pyrénées-Méditerranée" loading="lazy" /></div>
-                        <div class="partner-logo"><img src="logos/cgt-cheminots.jpg" alt="CGT Fédération des Cheminots" loading="lazy" /></div>
-                        <div class="partner-logo"><img src="logos/pays-pyrenees-mediterranee.jpg" alt="Pays Pyrénées-Méditerranée" loading="lazy" /></div>
-                        <div class="partner-logo"><img src="logos/cc-vallespir.jpg" alt="Communauté de communes du Vallespir" loading="lazy" /></div>
-                        <div class="partner-logo"><img src="logos/cc-acvi.png" alt="Communauté de communes Albères-Côte Vermeille-Illibéris" loading="lazy" /></div>
-                    </div>
-                    <div class="partners-text">
-                        <span class="partner-chip">Bien Vivre en Vallespir</span>
-                    </div>
-                </section>
-
-                <section class="section reveal">
-                    <div class="section-header"><h2 class="section-title">Archives</h2><p class="section-subtitle">Consultez nos précédentes publications.</p></div>
-                    <div class="cards-grid">
-                        <div class="card"><div class="card-img">📰</div><div class="card-body"><h4 class="card-title">Newsletters précédentes</h4><p class="card-text">Retrouvez ici les anciennes éditions de notre newsletter.</p><p style="margin-top:1rem;font-size:0.85rem;color:var(--gray)">[À compléter avec les liens]</p></div></div>
-                        <div class="card"><div class="card-img">📋</div><div class="card-body"><h4 class="card-title">Comptes-rendus de réunions</h4><p class="card-text">Accédez aux comptes-rendus des réunions du bureau de l'association.</p><p style="margin-top:1rem;font-size:0.85rem;color:var(--gray)">[À compléter avec les liens]</p></div></div>
-                    </div>
-                </section>
             </div>
         </div>
 
@@ -363,7 +344,7 @@
             <h2>Vous aussi, montez à bord !</h2>
             <p>Plus nous serons nombreux, plus notre voix comptera dans le débat public. Chaque adhésion et chaque signature renforcent le projet.</p>
             <div class="hero-cta">
-                <a href="https://www.helloasso.com/associations/osons-le-rail" class="btn btn-secondary" target="_blank" rel="noopener">🎟️ Adhérer</a>
+                <a href="https://www.helloasso.com/associations/osons-le-rail/adhesions/adhesion-osons-le-rail-2026" class="btn btn-secondary" target="_blank" rel="noopener">🎟️ Adhérer 2026</a>
                 <a href="https://chng.it/LD7MkBFDLm" class="btn btn-secondary" target="_blank" rel="noopener">✍️ Signer la pétition</a>
             </div>
         </section>
@@ -377,9 +358,9 @@
             <section class="section reveal"><div class="two-col">
                 <div class="prose">
                     <h2 class="block-title">L'association Osons le Rail&nbsp;!</h2>
-                    <p>L'association regroupe aujourd'hui <strong>80 adhérents</strong>&nbsp;: individuels, collectifs et institutionnels (mairie, département, région). Son financement repose à près de 80&nbsp;% sur les subventions de la mairie, du département et de la région.</p>
-                    <p>Notre objectif&nbsp;: la réouverture de la ligne ferroviaire entre <strong>Céret et Perpignan</strong>, un projet écologique et économique au bénéfice de tout le territoire — l'agglomération de Perpignan, les Albères, les Aspres et le Vallespir.</p>
+                    <p>L'association regroupe aujourd'hui <strong>80 adhérents</strong> individuels, collectifs et institutionnels (associations, organisations syndicales, partis politiques…). Son financement repose à <strong>46&nbsp;%</strong> sur les cotisations de ses adhérent(e)s et à <strong>47&nbsp;%</strong> de subventions (mairie de Céret et Conseil Départemental).</p>
                     <p>L'augmentation du nombre d'adhérents est un enjeu majeur&nbsp;: elle témoigne de la représentativité de l'association et pèse dans le débat public.</p>
+                    <p>Notre objectif&nbsp;: la réouverture de la ligne ferroviaire entre <strong>Céret et Perpignan</strong>, un projet écologique et économique au bénéfice de tout le territoire — l'agglomération de Perpignan, les Albères, les Aspres et le Vallespir.</p>
                 </div>
                 <div class="panel panel-accent">
                     <h3 class="sub-title">Un projet pour le territoire</h3>
@@ -388,7 +369,7 @@
                         <li><strong>34,8&nbsp;M€</strong> d'investissement infrastructure (±50&nbsp;%)</li>
                         <li><strong>34&nbsp;minutes</strong> de trajet Céret-Perpignan</li>
                         <li><strong>1&nbsp;300 à 2&nbsp;200</strong> navetteurs quotidiens sur le bas Vallespir</li>
-                        <li>Présentée en <strong>débat public le 28/11/2024</strong> à Céret devant 150 citoyens</li>
+                        <li>Présentée en <strong>débats publics</strong>&nbsp;: le 28/11/2024 à Céret devant 150 citoyens et le 13/02/2026 à Le Boulou devant une centaine de personnes</li>
                     </ul>
                 </div>
             </div></section>
@@ -397,8 +378,8 @@
                 <h2 class="block-title" style="text-align:center">Nos réalisations</h2>
                 <div class="cards-grid">
                     <div class="card"><div class="card-img">📝</div><div class="card-body"><h4 class="card-title">Pétition 2023</h4><p class="card-text">Plus de 2&nbsp;000 signataires pour « En Vallespir, demandons le retour du train Céret-Perpignan ».</p></div></div>
-                    <div class="card"><div class="card-img">📊</div><div class="card-body"><h4 class="card-title">Étude de faisabilité</h4><p class="card-text">Initiée par la CGT Cheminots, réalisée par Progexa, Proneos, Cerec Engineering et Traject. Présentée en débat public à Céret le 28/11/2024.</p></div></div>
-                    <div class="card"><div class="card-img">👥</div><div class="card-body"><h4 class="card-title">Mobilisation citoyenne</h4><p class="card-text">150 citoyens au débat public, un potentiel de 1&nbsp;300 à 2&nbsp;200 navetteurs journaliers sur le bas Vallespir.</p></div></div>
+                    <div class="card"><div class="card-img">📊</div><div class="card-body"><h4 class="card-title">Étude de faisabilité</h4><p class="card-text">Initiée par la CGT Cheminots, réalisée par Progexa, Proneos, Cerec Engineering et Traject. Présentée en débat public à Céret le 28/11/2024 et à Le Boulou le 13 février 2026.</p></div></div>
+                    <div class="card"><div class="card-img">👥</div><div class="card-body"><h4 class="card-title">Mobilisation citoyenne</h4><p class="card-text">250 citoyens aux débats publics, un potentiel de 1&nbsp;300 à 2&nbsp;200 navetteurs journaliers sur le bas Vallespir.</p></div></div>
                 </div>
             </section>
 
@@ -409,7 +390,7 @@
                     <div class="panel">
                         <h3 class="sub-title">🏛️ Collectivités & institutions</h3>
                         <ul class="prose" style="color:#374151">
-                            <li>Mairie de Céret, Mairie du Boulou, Mairie d'Elne, Mairie de Saint-Jean-Pla-de-Corts, Mairie de Banyuls-dels-Aspres</li>
+                            <li>Mairie de Céret, Mairie du Boulou, Mairie d'Elne, Mairie de Saint-Jean-Pla-de-Corts, Mairie de Banyuls-dels-Aspres, Mairie de Brouilla</li>
                             <li>Communauté de communes du Vallespir</li>
                             <li>Communauté de communes Albères-Côte Vermeille-Illibéris</li>
                             <li>Pays Pyrénées-Méditerranée</li>
@@ -419,14 +400,14 @@
                         </ul>
                     </div>
                     <div class="panel">
-                        <h3 class="sub-title">🤝 Acteurs & partenaires techniques</h3>
+                        <h3 class="sub-title">🤝 Nos adhérents collectifs</h3>
                         <ul class="prose" style="color:#374151">
-                            <li>CGT Cheminots 66 (à l'origine de l'étude de faisabilité via le CSE SNCF)</li>
-                            <li>Association Bien Vivre en Vallespir</li>
-                            <li>Cabinets d'ingénierie&nbsp;: Cerec Engineering, Progexa, Proneos, Traject</li>
-                            <li>Ecotrain, Tecsol (solutions techniques & énergie)</li>
-                            <li>Lio (réseau de bus départemental)</li>
-                            <li>Le Train Rouge & le Train Jaune (inspirations touristiques)</li>
+                            <li>Bien Vivre en Vallespir</li>
+                            <li>Vallespir Terres Vivantes</li>
+                            <li>Syndicat CGT&nbsp;: Union Locale du Vallespir, Cheminots de Perpignan, Territoriaux du Vallespir, Retraités Cheminots Perpignan, Retraités des Organismes Sociaux des Pyrénées-Orientales</li>
+                            <li>Syndicat Force Ouvrière des Cheminots des Pyrénées-Orientales</li>
+                            <li>Section du Parti Communiste Français du Vallespir</li>
+                            <li>La France Insoumise</li>
                         </ul>
                     </div>
                 </div>
@@ -443,14 +424,14 @@
                 <div class="stats-grid">
                     <div class="stat-card"><div class="stat-number" data-count="34" data-suffix=" min">0</div><div class="stat-label">Trajet Céret-Perpignan</div></div>
                     <div class="stat-card"><div class="stat-number">34,8&nbsp;M€</div><div class="stat-label">Investissement infra.</div></div>
-                    <div class="stat-card"><div class="stat-number" data-count="7">0</div><div class="stat-label">Haltes prévues</div></div>
+                    <div class="stat-card"><div class="stat-number" data-count="8">0</div><div class="stat-label">Haltes prévues</div></div>
                     <div class="stat-card"><div class="stat-number">−85&nbsp;%</div><div class="stat-label">Émissions de CO₂</div></div>
                 </div>
             </section>
 
             <section class="section reveal">
                 <h2 class="block-title" style="text-align:center">Tracé de la ligne &amp; bénéficiaires</h2>
-                <p class="section-subtitle" style="margin-bottom:1.5rem">7 haltes prévues&nbsp;: Céret Zone Ullrich · Saint-Jean-Pla-de-Corts · Le Boulou · Banyuls-dels-Aspres · Ortaffa/Brouilla · Elne · Perpignan.</p>
+                <p class="section-subtitle" style="margin-bottom:1.5rem">8 haltes prévues&nbsp;: Céret Zone Ullrich · Saint-Jean-Pla-de-Corts · Le Boulou · Banyuls-dels-Aspres · Ortaffa/Brouilla · Elne · Université · Perpignan.</p>
 
                 <div class="line-map" style="margin-bottom:1.5rem">
                     <div class="halte terminus"><div class="halte-line"></div><div class="halte-dot"></div><div class="halte-name">Céret<br>(terminus)</div></div>
@@ -459,15 +440,15 @@
                     <div class="halte"><div class="halte-line"></div><div class="halte-dot"></div><div class="halte-name">Banyuls-dels-Aspres</div></div>
                     <div class="halte"><div class="halte-line"></div><div class="halte-dot"></div><div class="halte-name">Ortaffa / Brouilla</div></div>
                     <div class="halte"><div class="halte-line"></div><div class="halte-dot"></div><div class="halte-name">Elne</div></div>
-                    <div class="halte terminus"><div class="halte-line"></div><div class="halte-dot"></div><div class="halte-name">Perpignan</div></div>
+                    <div class="halte"><div class="halte-line"></div><div class="halte-dot"></div><div class="halte-name">Perpignan Université</div></div>
+                    <div class="halte terminus"><div class="halte-line"></div><div class="halte-dot"></div><div class="halte-name">Perpignan<br>(gare SNCF)</div></div>
                 </div>
 
                 <div class="map-container">
                     <img src="carte-ligne.png" alt="Carte ferroviaire du département des Pyrénées-Orientales avec les haltes et communes desservies" loading="lazy" />
                     <div class="legend">
-                        <div class="legend-item"><span class="legend-dot" style="background:#3b82f6"></span><span><strong>7 haltes étudiées&nbsp;:</strong> Céret Zone Ullrich, Saint-Jean-Pla-de-Corts, Le Boulou, Banyuls-dels-Aspres, Ortaffa/Brouilla, Elne, Perpignan.</span></div>
-                        <div class="legend-item"><span class="legend-dot" style="background:#f59e0b"></span><span><strong>1 halte à étudier&nbsp;:</strong> entre Villeneuve-de-la-Raho, Corneilla-del-Vercol et Théza.</span></div>
-                        <div class="legend-item"><span class="legend-dot" style="background:#facc15"></span><span><strong>10 communes bénéficiaires de proximité&nbsp;:</strong> Maureillas-las-Illas, Montesquieu-des-Albères, Villelongue-dels-Monts, Laroque-des-Albères, Saint-Genis-des-Fontaines, Tresserre, Saint-Jean-Lasseille, Villemolaque, Saint-André-des-Albères, Palau-del-Vidre.</span></div>
+                        <div class="legend-item"><span class="legend-dot" style="background:#3b82f6"></span><span><strong>8 haltes prévues&nbsp;:</strong> Céret Zone Ullrich, Saint-Jean-Pla-de-Corts, Le Boulou, Banyuls-dels-Aspres, Ortaffa/Brouilla, Elne, Université, Perpignan.</span></div>
+                        <div class="legend-item"><span class="legend-dot" style="background:#facc15"></span><span><strong>10 communes bénéficiaires à proximité&nbsp;:</strong> Maureillas-las-Illas, Montesquieu-des-Albères, Villelongue-dels-Monts, Laroque-des-Albères, Saint-Genis-des-Fontaines, Tresserre, Saint-Jean-Lasseille, Villemolaque, Passa, Palau-del-Vidre.</span></div>
                         <div class="legend-item"><span class="legend-dot" style="background:#16a34a"></span><span><strong>10 communes du Haut Vallespir</strong> (report bus + plateforme multimodale au terminus de Céret)&nbsp;: Amélie-les-Bains, Montbolo, Arles-sur-Tech, Corsavy, Montferrer, Serralongue, Le Tech, Saint-Laurent-de-Cerdans, Coustouges, Prats-de-Mollo.</span></div>
                     </div>
                 </div>
@@ -556,7 +537,7 @@
             </section>
 
             <section class="section reveal">
-                <h2 class="block-title">Quels financements&nbsp;?</h2>
+                <h2 class="block-title">Quels financements potentiels&nbsp;?</h2>
                 <div class="panel prose" style="color:#374151">
                     <ul>
                         <li><strong>CPER mobilités 2023-2027 Occitanie&nbsp;:</strong> 1,6&nbsp;Md€ pour la mobilité (920&nbsp;M€ Région + 656&nbsp;M€ État), dont ~70&nbsp;% fléchés vers le ferroviaire.</li>
@@ -596,28 +577,38 @@
         </div></div>
     </main>
 
+    <!-- ====================== NOS PUBLICATIONS ====================== -->
+    <main id="page-nos-publications" class="page-content">
+        <div class="main"><div class="main-container">
+            <section class="section"><div class="section-header"><h1 class="section-title">Nos publications</h1><p class="section-subtitle">Retrouvez ici les documents et communications de l'association.</p></div></section>
+            <section class="section reveal">
+                <div class="cards-grid">
+                    <div class="card"><div class="card-img">📋</div><div class="card-body"><h4 class="card-title">Comptes rendus des Assemblées Générales</h4><p class="card-text">Les comptes rendus de nos AG.</p><p style="margin-top:1rem;font-size:0.85rem;color:var(--gray)">[À compléter avec les liens]</p></div></div>
+                    <div class="card"><div class="card-img">📣</div><div class="card-body"><h4 class="card-title">Tracts</h4><p class="card-text">Nos tracts et supports de mobilisation.</p><p style="margin-top:1rem;font-size:0.85rem;color:var(--gray)">[À compléter avec les liens]</p></div></div>
+                    <div class="card"><div class="card-img">✉️</div><div class="card-body"><h4 class="card-title">Courriers aux institutionnels</h4><p class="card-text">Nos courriers adressés aux collectivités et institutions.</p><p style="margin-top:1rem;font-size:0.85rem;color:var(--gray)">[À compléter avec les liens]</p></div></div>
+                    <div class="card"><div class="card-img">📰</div><div class="card-body"><h4 class="card-title">Newsletter</h4><p class="card-text">Les éditions de notre newsletter.</p><p style="margin-top:1rem;font-size:0.85rem;color:var(--gray)">[À compléter avec les liens]</p></div></div>
+                </div>
+            </section>
+        </div></div>
+    </main>
+
     <!-- ====================== HISTORIQUE ====================== -->
     <main id="page-historique" class="page-content">
         <div class="main"><div class="main-container">
             <section class="section"><div class="section-header"><h1 class="section-title">Historique</h1><p class="section-subtitle">De la construction de la ligne d'Elne à Arles-sur-Tech à la mobilisation pour sa réouverture.</p></div></section>
             <section class="section reveal"><div class="timeline">
-                <div class="timeline-item"><div class="timeline-date">31 janvier 1880</div><div class="timeline-title">Déclaration d'utilité publique</div><div class="timeline-description">Le « chemin de fer d'Elne à Arles-sur-Tech » est déclaré d'utilité publique par une loi du 31 janvier 1880.</div></div>
-                <div class="timeline-item"><div class="timeline-date">20 novembre 1883</div><div class="timeline-title">Concession à la Compagnie du Midi</div><div class="timeline-description">Une loi approuve la convention de concession définitive de la ligne à la Compagnie des chemins de fer du Midi.</div></div>
+                <div class="timeline-item"><div class="timeline-date">1872</div><div class="timeline-title">Premières études</div><div class="timeline-description">À la suite d'une demande du Conseil général, des études pour un chemin de fer de Perpignan à Arles-sur-Tech sont réalisées.</div></div>
+                <div class="timeline-item"><div class="timeline-date">31 janvier 1880</div><div class="timeline-title">Déclaration d'utilité publique</div><div class="timeline-description">Le « chemin de fer d'Elne à Arles-sur-Tech » est déclaré d'utilité publique à titre d'intérêt général par une loi du 31 janvier 1880. Ce texte autorise le ministre des travaux publics à ouvrir le chantier de construction.</div></div>
+                <div class="timeline-item"><div class="timeline-date">1882</div><div class="timeline-title">Début des travaux</div><div class="timeline-description">Les travaux débutent. Le chantier est réalisé en trois sections&nbsp;: Elne au Boulou, du Boulou à Céret et de Céret à Arles-sur-Tech. En 1883, le crédit ouvert est de 650 000 francs&nbsp;: il comprend notamment, sur la première section, l'agrandissement de la gare d'Elne et le raccordement à la ligne de Narbonne à Port-Bou (frontière).</div></div>
+                <div class="timeline-item"><div class="timeline-date">20 novembre 1883</div><div class="timeline-title">Convention avec la Compagnie du Midi</div><div class="timeline-description">Une loi approuve la convention conclue entre la Compagnie des chemins de fer du Midi et du Canal latéral à la Garonne et le ministre des travaux publics, qui précise la concession à titre définitif de la ligne d'Elne à Arles-sur-Tech&nbsp;: l'État réalise les achats de terrains, terrassements, ouvrages d'art, stations, maisons de garde et passages à niveau (décisions de tracé prises avec la compagnie)&nbsp;; la compagnie prend en charge les superstructures et met en service les sections terminées.</div></div>
                 <div class="timeline-item highlight"><div class="timeline-date">18 août 1889</div><div class="timeline-title">Inauguration Elne — Céret</div><div class="timeline-description">Mise en service de la section entre les gares d'Elne et de Céret, qui désenclave le Vallespir.</div></div>
                 <div class="timeline-item"><div class="timeline-date">26 juin 1898</div><div class="timeline-title">Extension Céret — Arles-sur-Tech</div><div class="timeline-description">Ouverture au trafic de Céret à Arles-sur-Tech. 5 allers-retours quotidiens circulaient en 1926.</div></div>
-                <div class="timeline-item"><div class="timeline-date">1er janvier 1934</div><div class="timeline-title">Communauté d'intérêt des compagnies</div><div class="timeline-description">La Compagnie du Midi et du Canal latéral à la Garonne s'associe à la Compagnie de Paris à Orléans pour l'exploitation commune des deux réseaux.</div></div>
-                <div class="timeline-item"><div class="timeline-date">1er janvier 1938</div><div class="timeline-title">Nationalisation — création de la SNCF</div><div class="timeline-description">La SNCF récupère la concession de la ligne lors de la nationalisation des grandes compagnies.</div></div>
-                <div class="timeline-item highlight"><div class="timeline-date">23 mai 1940</div><div class="timeline-title">Fermeture au trafic voyageurs</div><div class="timeline-description">Fermeture totale de la ligne au service des voyageurs.</div></div>
-                <div class="timeline-item"><div class="timeline-date">17 octobre 1940</div><div class="timeline-title">Fermeture marchandises Amélie — Arles</div><div class="timeline-description">Après les inondations d'octobre 1940 qui endommagent gravement l'infrastructure entre Amélie-les-Bains et Arles-sur-Tech.</div></div>
-                <div class="timeline-item"><div class="timeline-date">9 juillet 1952</div><div class="timeline-title">Déclassement Amélie — Arles</div><div class="timeline-description">Déclassement de la section d'Amélie-les-Bains à Arles-sur-Tech.</div></div>
-                <div class="timeline-item"><div class="timeline-date">3 avril 1972</div><div class="timeline-title">Fermeture Céret — Amélie</div><div class="timeline-description">Fermeture de la section au service des marchandises entre Céret et Amélie-les-Bains.</div></div>
-                <div class="timeline-item"><div class="timeline-date">26 juillet 1973</div><div class="timeline-title">Déclassement Céret — Amélie</div><div class="timeline-description">Déclassement de la section de Céret à Amélie-les-Bains.</div></div>
+                <div class="timeline-item highlight"><div class="timeline-date">23 mai 1940</div><div class="timeline-title">Fermeture au trafic voyageurs</div><div class="timeline-description">Fermeture totale de la ligne au service des voyageurs, après 42 ans de fonctionnement.</div></div>
                 <div class="timeline-item"><div class="timeline-date">18 septembre 1981</div><div class="timeline-title">Électrification Elne — Le Boulou</div><div class="timeline-description">La ligne est électrifiée en 1 500 V continu entre Elne et Le Boulou, en même temps que la ligne Narbonne — Port-Bou.</div></div>
-                <div class="timeline-item"><div class="timeline-date">1er janvier 1997</div><div class="timeline-title">Création de RFF</div><div class="timeline-description">Le réseau ferré national devient propriété de Réseau Ferré de France, gestionnaire jusqu'au 31 décembre 2014.</div></div>
-                <div class="timeline-item"><div class="timeline-date">2015</div><div class="timeline-title">Retour à la SNCF</div><div class="timeline-description">La SNCF redevient concessionnaire et exploitant. La ligne Elne-Le Boulou est réservée au trafic fret.</div></div>
+                <div class="timeline-item highlight"><div class="timeline-date">10 février 2001</div><div class="timeline-title">Création de l'association Osons le Rail</div><div class="timeline-description">Parution au Journal Officiel, suite à la déclaration à la sous-préfecture de Céret le 12 décembre 2000. Objet&nbsp;: ouverture aux trains de voyageurs et défense de la ligne SNCF Perpignan - Elne - Le Boulou - Céret, et la desserte du Vallespir.</div></div>
                 <div class="timeline-item highlight"><div class="timeline-date">2023</div><div class="timeline-title">Pétition citoyenne</div><div class="timeline-description">« En Vallespir, demandons le retour du train Céret-Perpignan » réunit plus de 2 000 signataires.</div></div>
                 <div class="timeline-item highlight"><div class="timeline-date">28 novembre 2024</div><div class="timeline-title">Débat public à Céret</div><div class="timeline-description">L'étude de faisabilité initiée par la CGT Cheminots est présentée devant 150 citoyens. Elle confirme la viabilité du projet.</div></div>
-                <div class="timeline-item highlight"><div class="timeline-date">Aujourd'hui</div><div class="timeline-title">Mobilisation</div><div class="timeline-description">« Le train est le transport écologique de demain&nbsp;! La réoccupation de la voie ferrée historique ouvrira un nouveau chapitre pour le Vallespir. » — Osons le Rail&nbsp;!</div></div>
+                <div class="timeline-item highlight"><div class="timeline-date">13 février 2026</div><div class="timeline-title">Débat public à Le Boulou</div><div class="timeline-description">L'étude est présentée à une centaine de personnes.</div></div>
             </div></section>
         </div></div>
     </main>
@@ -627,12 +618,12 @@
         <div class="main"><div class="main-container">
             <section class="section"><div class="section-header"><h1 class="section-title">Une ligne, des envies&nbsp;?</h1><p class="section-subtitle">Découvrez les richesses du territoire desservi par la future ligne Céret-Perpignan.</p></div></section>
             <section class="section reveal"><h2 class="block-title">🏛️ Patrimoine et culture</h2><div class="two-col">
-                <div class="prose"><h3 class="sub-title">Visiter</h3><ul><li>Le cloître d'Elne</li><li>Le Musée d'Art Moderne de Céret</li><li>Le Pont du Diable</li><li>Les villages du Haut Vallespir</li><li>Le patrimoine thermal</li><li>Les églises romanes</li></ul></div>
+                <div class="prose"><h3 class="sub-title">Visiter</h3><ul><li>Le cloître d'Elne</li><li>La maternité suisse d'Elne</li><li>La maison de l'Eau et de la Méditerranée à Le Boulou</li><li>Le Musée d'Art Moderne de Céret</li><li>Le Musée de la musique à Céret</li><li>Le Pont du Diable</li><li>Les villages du Haut Vallespir</li><li>Le patrimoine thermal</li><li>Les églises romanes</li></ul></div>
                 <div class="prose"><h3 class="sub-title">🍷 Gastronomie et terroir</h3><ul><li>Les cerises de Céret</li><li>Les vins du Roussillon</li><li>Les charcuteries catalanes</li><li>Les marchés locaux</li><li>Les restaurants du terroir</li></ul></div>
             </div></section>
             <section class="section reveal"><h2 class="block-title">🌿 Bien-être, nature et activités</h2><div class="two-col">
-                <div class="prose"><h3 class="sub-title">Bouger</h3><ul><li>Randonnée en montagne</li><li>VTT et cyclisme</li><li>Baignade en rivière</li><li>Escalade</li><li>Voie verte du Vallespir</li></ul></div>
-                <div class="prose"><h3 class="sub-title">Santé au naturel</h3><ul><li>Cure thermale d'Amélie-les-Bains</li><li>23&nbsp;% des curistes nationaux sont accueillis dans les P.-O. — 1ʳᵉ destination thermale de France.</li></ul></div>
+                <div class="prose"><h3 class="sub-title">Bouger</h3><ul><li>Randonnée en montagne</li><li>VTT et cyclisme</li><li>Baignade en rivière</li><li>Escalade</li><li>Voie verte du Vallespir</li><li>Le lac de Saint-Jean-Pla-de-Corts</li></ul></div>
+                <div class="prose"><h3 class="sub-title">Santé au naturel</h3><ul><li>Cures thermales de Le Boulou et d'Amélie-les-Bains</li><li>23&nbsp;% des curistes nationaux sont accueillis dans les P.-O. — 1ʳᵉ destination thermale de France.</li></ul></div>
             </div>
             <p style="text-align:center;margin-top:2rem;font-size:1.1rem;font-weight:600;color:var(--primary-dark)">Le retour du train facilitera l'accès à toutes ces richesses, de manière écologique et confortable.</p>
             </section>
@@ -647,7 +638,12 @@
                 <div class="panel">
                     <h3 class="sub-title">🟡 Le Train Jaune</h3>
                     <p class="prose">Le célèbre train jaune de Cerdagne relie Villefranche-de-Conflent à Latour-de-Carol — 63&nbsp;km, 21 gares. Un voyage spectaculaire à travers les montagnes catalanes, exploité par <strong>Lio</strong>.</p>
-                    <ul class="prose"><li>Fonctionne toute l'année (offre régulière + touristique)</li><li>Trajet complet&nbsp;: ~3h, 22,50&nbsp;€ hors promo</li><li>Voyages scolaires et parcours touristiques</li></ul>
+                    <ul class="prose"><li>Fonctionne toute l'année (offre régulière + touristique)</li><li>Trajet complet&nbsp;: ~3h, 22,50&nbsp;€ hors promo</li><li>Train alimenté par des centrales hydro-électriques</li><li>Voyages scolaires et parcours touristiques</li></ul>
+                    <h4 style="margin:1rem 0 0.5rem;color:var(--dark)">Soutiens</h4>
+                    <ul class="prose">
+                        <li><strong>Association Train-en-Têt</strong>&nbsp;: usagers qui luttent pour le maintien et le développement de la ligne Perpignan - Villefranche-de-Conflent. <a href="mailto:trainentet@gmail.com" style="color:var(--primary-dark)">trainentet@gmail.com</a></li>
+                        <li><strong>Comité d'usagers de la ligne du Train Jaune</strong> pour l'amélioration des conditions de transport. <a href="https://letrainjaune.net" target="_blank" rel="noopener" style="color:var(--primary-dark)">letrainjaune.net</a> — <a href="mailto:sauvonsletrainjaune@laposte.net" style="color:var(--primary-dark)">sauvonsletrainjaune@laposte.net</a></li>
+                    </ul>
                     <a href="https://www.ter.sncf.com/occitanie/loisirs/train-jaune" class="btn btn-primary btn-sm" target="_blank" rel="noopener">🔗 En savoir plus</a>
                 </div>
                 <div class="panel">
@@ -660,12 +656,16 @@
                         <a href="https://www.instagram.com/letrainrouge_tpcf/" class="btn btn-secondary btn-sm" target="_blank" rel="noopener" style="color:var(--primary-dark);border-color:var(--primary);background:white">📷 Instagram</a>
                         <a href="mailto:info@letrainrouge.fr" class="btn btn-secondary btn-sm" style="color:var(--primary-dark);border-color:var(--primary);background:white">✉️ Contact</a>
                     </div>
+                    <h4 style="margin:1rem 0 0.5rem;color:var(--dark)">Soutiens</h4>
+                    <ul class="prose">
+                        <li><strong>Association pour la Ligne Ferroviaire Rivesaltes-Quillan (ALF66)</strong>&nbsp;: pour la réouverture de la ligne SNCF Rivesaltes – Quillan, rétablissant la continuité ferroviaire entre la vallée de l'Aude et les Pyrénées-Orientales. <a href="mailto:trainrivesaltesquillan@laposte.net" style="color:var(--primary-dark)">trainrivesaltesquillan@laposte.net</a></li>
+                        <li><strong>Convergence Nationale Rail (CNR)</strong>&nbsp;: plus de 80 collectifs, comités, associations d'usagers, collectivités, élu·es, syndicalistes et citoyen·nes, au service du Service Public ferroviaire — sa défense, sa promotion et son développement. <a href="https://www.convergence-rail.fr" target="_blank" rel="noopener" style="color:var(--primary-dark)">convergence-rail.fr</a></li>
+                    </ul>
                 </div>
             </div></section>
             <section class="section reveal" style="text-align:center">
                 <div class="panel" style="max-width:760px;margin:0 auto">
-                    <h2 class="block-title">Pourquoi ces trains comptent</h2>
-                    <p class="lead">Ces lignes démontrent que le rail peut être un vecteur de développement économique, touristique et écologique, en associant usagers locaux et tourisme. Le Train Rouge a même relancé le fret local abandonné par la SNCF, préservant ainsi sa ligne. Un modèle inspirant pour Perpignan-Céret.</p>
+                    <p class="lead">Ces lignes démontrent que le rail peut être un vecteur de développement économique, touristique et écologique, en associant usagers locaux, institutionnels et tourisme.</p>
                 </div>
             </section>
         </div></div>
@@ -686,8 +686,9 @@
                     <div style="margin-top:1.5rem">
                         <h3 class="sub-title">🤝 Nous soutenir</h3>
                         <div style="display:flex;gap:0.75rem;flex-wrap:wrap">
-                            <a href="https://www.helloasso.com/associations/osons-le-rail" class="btn btn-primary btn-sm" target="_blank" rel="noopener">🎟️ Adhérer</a>
+                            <a href="https://www.helloasso.com/associations/osons-le-rail/adhesions/adhesion-osons-le-rail-2026" class="btn btn-primary btn-sm" target="_blank" rel="noopener">🎟️ Adhérer 2026</a>
                             <a href="https://chng.it/LD7MkBFDLm" class="btn btn-primary btn-sm" target="_blank" rel="noopener">✍️ Signer la pétition</a>
+                            <a href="https://www.instagram.com/osonslerail" class="btn btn-primary btn-sm" target="_blank" rel="noopener">📷 Instagram</a>
                         </div>
                     </div>
                 </div>
@@ -721,19 +722,19 @@
                         <li><a onclick="navigateTo('qui-sommes-nous')">Qui sommes-nous&nbsp;?</a></li>
                         <li><a onclick="navigateTo('notre-projet')">Notre projet</a></li>
                         <li><a onclick="navigateTo('horaires')">Horaires</a></li>
+                        <li><a onclick="navigateTo('nos-publications')">Nos publications</a></li>
                         <li><a onclick="navigateTo('historique')">Historique</a></li>
                         <li><a onclick="navigateTo('une-ligne-des-envies')">Une ligne, des envies</a></li>
-                        <li><a onclick="navigateTo('trains-du-66')">Les trains du 66</a></li>
+                        <li><a onclick="navigateTo('trains-du-66')">Trains du 66 &amp; soutiens</a></li>
                         <li><a onclick="navigateTo('contacts')">Contacts</a></li>
                     </ul>
                 </div>
                 <div class="footer-col">
                     <h3>Rejoignez-nous</h3>
                     <ul>
-                        <li><a href="https://www.helloasso.com/associations/osons-le-rail" target="_blank" rel="noopener">🎟️ Adhérer via HelloAsso</a></li>
+                        <li><a href="https://www.helloasso.com/associations/osons-le-rail/adhesions/adhesion-osons-le-rail-2026" target="_blank" rel="noopener">🎟️ Adhérer 2026 via HelloAsso</a></li>
                         <li><a href="https://chng.it/LD7MkBFDLm" target="_blank" rel="noopener">✍️ Signer la pétition</a></li>
-                        <li><a href="#" target="_blank" rel="noopener">📷 Instagram</a></li>
-                        <li><a href="#" target="_blank" rel="noopener">📘 Facebook</a></li>
+                        <li><a href="https://www.instagram.com/osonslerail" target="_blank" rel="noopener">📷 Instagram @osonslerail</a></li>
                     </ul>
                 </div>
             </div>
